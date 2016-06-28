@@ -77,7 +77,7 @@ public class ProductoDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         List<Producto> resultado = new ArrayList<Producto>();
-        String query = "SELECT DISTINCT a.* FROM PRODUCTO a WHERE ((a.NOMBRE = ?) OR (a.ANIMAL = ?) OR (a.CATEGORIA = ?))";
+        String query = "SELECT DISTINCT * FROM PRODUCTO WHERE ANIMAL = ?";
 
         try {
             ps = connection.prepareStatement(query);

@@ -1,7 +1,7 @@
 <div id="cssmenu">
                     <ul>
                      
-                       <li class="active has-sub"><a href="#"><span>Perro</span></a>
+                       <li class="active has-sub"><a href="ObtenerProductos?act=perro"><span>Perro</span></a>
                           <ul>
                              <li class="has-sub"><a href="comprar-camas.html"><span>Cama</span></a></li>
                              <li class="has-sub"><a href="pagina-en-construccion.html"><span>Comida</span></a></li>
