@@ -1,12 +1,12 @@
 <div id="cssmenu">
                     <ul>
                      
-                       <li class="active has-sub"><a href="ObtenerProductos?act=perro"><span>Perro</span></a>
+                       <li class="active has-sub"><a href="ObtenerProductos?act=Perro"><span>Perro</span></a>
                           <ul>
-                             <li class="has-sub"><a href="ObtenerProductos?act=perroCama"><span>Cama</span></a></li>
-                             <li class="has-sub"><a href="ObtenerProductos?act=perroComida"><span>Comida</span></a></li>
-                             <li class="has-sub"><a href="ObtenerProductos?act=perroJuguete"><span>Juguetes</span></a></li>
-                             <li class="has-sub"><a href="ObtenerProductos?act=perroMas"><span>Mas+</span></a></li>
+                             <li class="has-sub"><a href="ObtenerProductos?act=PerroCama"><span>Cama</span></a></li>
+                             <li class="has-sub"><a href="ObtenerProductos?act=PerroComida"><span>Comida</span></a></li>
+                             <li class="has-sub"><a href="ObtenerProductos?act=PerroJuguete"><span>Juguetes</span></a></li>
+                             <li class="has-sub"><a href="ObtenerProductos?act=PerroMas"><span>Mas+</span></a></li>
                              
                              </ul>
                              
