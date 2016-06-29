@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servelt;
+package Servlet;
 
 import Modelo.Producto;
 import ModeloDB.ProductoDB;
@@ -34,7 +34,7 @@ public class ObtenerProductos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String action = request.getParameter("act");//Recoge la peticion 
+        String action = request.getParameter("animal");//Recoge la peticion 
         String url = "/catalogo.jsp";
        
         if (action != null) {
