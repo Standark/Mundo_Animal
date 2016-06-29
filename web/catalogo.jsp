@@ -45,7 +45,7 @@
 
                                             <ul>
                                                 <% for (int i = 0; i < listProd.size(); i++) {%>
-                                                <li>Nombre producto: <b><%=listProd.get(i).getNombre()%></b> ----- Descripción: <b><%=listProd.get(i).getDescripcion()%></b> ----- Precio: <b><%=listProd.get(i).getPrecio()%></b><b>Imagen:<img src="<%=listProd.get(i).getImagen()%>"</b><b><button class ="btn" type="submit" >Añadir al carrito</button></b></li>
+                                                <li>Nombre producto: <b><%=listProd.get(i).getNombre()%></b> ----- Descripción: <b><%=listProd.get(i).getDescripcion()%></b> ----- Precio: <b><%=listProd.get(i).getPrecio()%></b><b>Imagen:<img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b><b><button class ="btn" type="submit" >Añadir al carrito</button></b></li>
                                                     <%}%>
                                             </ul>
                                             <%} else {%>
