@@ -35,11 +35,11 @@
                                     <div id="producto">
                                         <table id ="producto-flitros" >
 
-                                            <% String cat = (String) request.getAttribute("cat");%>
+                                            <% String animal = (String) request.getAttribute("animal");%>
 
                                             <% ArrayList<Producto> listProd = (ArrayList<Producto>) request.getAttribute("listProd");%>
                                             
-                                            <h3>Lista de productos para la categoría:&nbsp;<b><%=cat%></b></h3>
+                                            <h3>Lista de productos para el animal:&nbsp;<b><%=animal%></b></h3>
                                              
                                             <% if (!listProd.isEmpty()) {%>
 
