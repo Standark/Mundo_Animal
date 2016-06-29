@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * @author Roberto
  */
@@ -81,9 +80,9 @@ public class ProductoDB {
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1,animal);
+            ps.setString(1, animal);
             ResultSet res = ps.executeQuery();
-            while(res.next()){
+            while (res.next()) {
                 Producto producto = new Producto(res.getInt("ID"),
                         res.getString("NOMBRE"),
                         res.getString("DESCRIPCION"),
@@ -102,7 +101,39 @@ public class ProductoDB {
             return resultado;
         }
     }
-    
+
+    public static List<Producto> buscarProducto(String animal, String categoria) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        List<Producto> resultado = new ArrayList<Producto>();
+        String query = "SELECT DISTINCT * FROM PRODUCTOS WHERE ANIMAL = ? AND CATEGORIA =  ?"; 
+        
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, animal);
+            ps.setString(2, categoria);
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                Producto producto = new Producto(res.getInt("ID"),
+                        res.getString("NOMBRE"),
+                        res.getString("DESCRIPCION"),
+                        res.getDouble("PRECIO"),
+                        res.getString("IMAGEN"),
+                        res.getInt("VALORACION"),
+                        res.getString("ANIMAL"),
+                        res.getString("CATEGORIA"));
+                resultado.add(producto);
+            }
+            ps.close();
+            pool.freeConnection(connection);
+            return resultado;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return resultado;
+        }
+    }
+
     public static ArrayList<Producto> buscarProductosPorValoracion(int i) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -112,9 +143,9 @@ public class ProductoDB {
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setInt(1,i);
+            ps.setInt(1, i);
             ResultSet res = ps.executeQuery();
-            while(res.next()){
+            while (res.next()) {
                 Producto producto = new Producto(res.getInt("ID"),
                         res.getString("NOMBRE"),
                         res.getString("DESCRIPCION"),
@@ -128,13 +159,13 @@ public class ProductoDB {
             ps.close();
             pool.freeConnection(connection);
             return resultado;
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
             return resultado;
         }
     }
-    
+
     public static Producto getProductoPorId(int idProducto) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -194,13 +225,14 @@ public class ProductoDB {
             ps.close();
             pool.freeConnection(connection);
             return res;
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
         }
     }
-/* es posible que haya que borrarlo
+
+    /* es posible que haya que borrarlo
     public static String getNombredelProducto(int idProducto) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -224,8 +256,8 @@ public class ProductoDB {
         }
         return titulo;
     }*/
-
     public static Producto getNombre(String action) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
