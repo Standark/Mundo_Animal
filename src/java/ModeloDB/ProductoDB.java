@@ -53,14 +53,14 @@ public class ProductoDB {
             ps.setString(1, nombreProducto);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                producto = new Producto(rs.getInt("id"),
-                        rs.getString("nomre"),
-                        rs.getString("descripcion"),
-                        rs.getDouble("precio"),
-                        rs.getString("imagen"),
-                        rs.getInt("valoracion"),
-                        rs.getString("animal"),
-                        rs.getString("categoria"));
+                producto = new Producto(rs.getInt("ID"),
+                        rs.getString("NOMBRE"),
+                        rs.getString("DESCRIPCION"),
+                        rs.getDouble("PRECIO"),
+                        rs.getString("IMAGEN"),
+                        rs.getInt("VALORACION"),
+                        rs.getString("ANIMAL"),
+                        rs.getString("CATEGORIA"));
             }
             ps.close();
             pool.freeConnection(connection);
@@ -72,7 +72,7 @@ public class ProductoDB {
         return producto;
     }
 
-    public static List<Producto> buscarProducto(String s) {
+    public static List<Producto> buscarProducto(String animal) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -81,19 +81,19 @@ public class ProductoDB {
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1,s);
-            ps.setString(2,s);
-            ps.setString(3,s);
+            ps.setString(1,animal);
+            ps.setString(2,animal);
+            ps.setString(3,animal);
             ResultSet res = ps.executeQuery();
             while(res.next()){
-                Producto producto = new Producto(res.getInt("id"),
-                        res.getString("nombre"),
-                        res.getString("descripcion"),
-                        res.getDouble("precio"),
-                        res.getString("imagen"),
-                        res.getInt("valoracion"),
-                        res.getString("animal"),
-                        res.getString("categoria"));
+                Producto producto = new Producto(res.getInt("ID"),
+                        res.getString("NOMBRE"),
+                        res.getString("DESCRIPCION"),
+                        res.getDouble("PRECIO"),
+                        res.getString("IMAGEN"),
+                        res.getInt("VALORACION"),
+                        res.getString("ANIMAL"),
+                        res.getString("CATEGORIA"));
                 resultado.add(producto);
             }
             ps.close();
@@ -117,14 +117,14 @@ public class ProductoDB {
             ps.setInt(1,i);
             ResultSet res = ps.executeQuery();
             while(res.next()){
-                Producto producto = new Producto(res.getInt("id"),
-                        res.getString("nombre"),
-                        res.getString("descripcion"),
-                        res.getDouble("precio"),
-                        res.getString("imagen"),
-                        res.getInt("valoracion"),
-                        res.getString("animal"),
-                        res.getString("categoria"));
+                Producto producto = new Producto(res.getInt("ID"),
+                        res.getString("NOMBRE"),
+                        res.getString("DESCRIPCION"),
+                        res.getDouble("PRECIO"),
+                        res.getString("IMAGEN"),
+                        res.getInt("VALORACION"),
+                        res.getString("ANIMAL"),
+                        res.getString("CATEGORIA"));
                 resultado.add(producto);
             }
             ps.close();
@@ -149,14 +149,14 @@ public class ProductoDB {
             ps.setInt(1, idProducto);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                producto = new Producto(rs.getInt("id"),
-                        rs.getString("nombre"),
-                        rs.getString("diario"),
-                        rs.getDouble("precio"),
-                        rs.getString("imagen"),
-                        rs.getInt("valoracion"),
-                        rs.getString("animal"),
-                        rs.getString("categoria"));
+                producto = new Producto(rs.getInt("ID"),
+                        rs.getString("NOMBRE"),
+                        rs.getString("DESCRIPCION"),
+                        rs.getDouble("PRECIO"),
+                        rs.getString("IMAGEN"),
+                        rs.getInt("VALORACION"),
+                        rs.getString("ANIMAL"),
+                        rs.getString("CATEGORIA"));
             }
             ps.close();
             pool.freeConnection(connection);
