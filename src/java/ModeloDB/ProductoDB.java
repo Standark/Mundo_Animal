@@ -77,13 +77,11 @@ public class ProductoDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         List<Producto> resultado = new ArrayList<Producto>();
-        String query = "SELECT DISTINCT * FROM PRODUCTO WHERE ANIMAL = ?";
+        String query = "SELECT DISTINCT * FROM PRODUCTOS WHERE ANIMAL = ?";
 
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1,animal);
-            ps.setString(2,animal);
-            ps.setString(3,animal);
             ResultSet res = ps.executeQuery();
             while(res.next()){
                 Producto producto = new Producto(res.getInt("ID"),
