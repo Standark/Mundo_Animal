@@ -1,2 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/Mundo_Animal"/>
+<Resource name="jdbc/mundoAnimal" auth="Container"
+maxActive="100" maxIdle="30" maxWait="10000"
+username="root" password="1234"
+driverClassName="org.apache.derby.jdbc.ClientDriver"
+url="jdbc:derby://localhost:1527/mundoAnimal"
+logAbandoned="true" removeAbandoned="true"
+removeAbandonedTimeout="60" type="javax.sql.DataSource" />
+</Context>

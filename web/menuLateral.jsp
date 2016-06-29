@@ -15,11 +15,11 @@
                              <li class="has-sub"><a href="pagina-en-construccion.html"><span>Cama</span></a></li>
                              <li class="has-sub"><a href="comprar-comida-gato.html"><span>Comida</span></a></li>
                              <li class="has-sub"><a href="pagina-en-construccion.html"><span>Juguetes</span></a></li>
-                             <li class="has-sub"><a href="pagina-en-construccion.html"><span>MÃ¡s+</span></a></li>
+                             <li class="has-sub"><a href="pagina-en-construccion.html"><span>Más+</span></a></li>
                              </ul>
                           <li><a href="comprar-jaula.html"><span>Roedores</span></a>
                           <li><a href="comprar-flitro.html"><span>Peces</span></a></li>
-                          <li><a href="pagina-en-construccion.html"><span>Pajaros</span></a></li>
+                          <li><a href="pagina-en-construccion.html"><span>Aves</span></a></li>
                           <li><a href="pagina-en-construccion.html"><span>Mas</span></a></li>
                           <li><a href="pagina-en-construccion.html"><span>¡OFERTAS!</span></a></li>
                           <li>&nbsp </li>
