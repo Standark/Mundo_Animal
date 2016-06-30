@@ -6,7 +6,7 @@
 package servlet.travelbook;
 
 import dominio.MediaLugar;
-import dominioBD.ValoracionBD;
+import ModeloDB.Travelbook.ValoracionBD;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;

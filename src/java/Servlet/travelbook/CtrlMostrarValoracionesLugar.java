@@ -6,7 +6,7 @@
 package servlet.travelbook;
 
 import dominio.Opiniones;
-import dominioBD.ValoracionBD;
+import ModeloDB.Travelbook.ValoracionBD;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;

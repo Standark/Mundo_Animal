@@ -2,8 +2,8 @@ package servlet.travelbook;
 
 import dominio.Diario;
 import dominio.UsuarioRegistrado;
-import dominioBD.DiarioBD;
-import dominioBD.UsuarioRegistradoBD;
+import ModeloDB.Travelbook.DiarioBD;
+import ModeloDB.Travelbook.UsuarioRegistradoBD;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

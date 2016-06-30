@@ -7,9 +7,9 @@ package servlet.travelbook;
 
 import dominio.Dia;
 import dominio.Diario;
-import dominioBD.DiaBD;
-import dominioBD.DiarioBD;
-import dominioBD.VisitasBD;
+import ModeloDB.Travelbook.DiaBD;
+import ModeloDB.Travelbook.DiarioBD;
+import ModeloDB.Travelbook.VisitasBD;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;

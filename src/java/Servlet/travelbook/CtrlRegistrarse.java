@@ -1,7 +1,7 @@
 package servlet.travelbook;
 
 import dominio.UsuarioRegistrado;
-import dominioBD.UsuarioRegistradoBD;
+import ModeloDB.Travelbook.UsuarioRegistradoBD;
 import java.io.File;
 import java.io.IOException;
 import java.util.Random;
