@@ -34,19 +34,21 @@
                                 <td rowspan="3"  width= "4000 px">
                                     <div id="producto">
                                         <table id ="producto-flitros" >
-
+                                            
                                             <% String animal = (String) request.getAttribute("animal");%>
 
                                             <% ArrayList<Producto> listProd = (ArrayList<Producto>) request.getAttribute("listProd");%>
-                                            
-                                            <h3>Lista de productos para el animal:&nbsp;<b><%=animal%></b></h3>
-                                             
+                                            <tr>
+                                                <td><h3>Lista de productos para el animal:&nbsp;<b><%=animal%></b></h3></td>
+                                            </tr> 
                                             <% if (!listProd.isEmpty()) {%>
 
                                             <ul>
                                                 <% for (int i = 0; i < listProd.size(); i++) {%>
-                                                <li>Nombre producto: <b><%=listProd.get(i).getNombre()%></b> ----- Descripción: <b><%=listProd.get(i).getDescripcion()%></b> ----- Precio: <b><%=listProd.get(i).getPrecio()%></b><b>Imagen:<img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b><b><button class ="btn" type="submit" >Añadir al carrito</button></b></li>
-                                                    <%}%>
+                                                <tr>
+                                                    <td><li>Nombre producto: <b><%=listProd.get(i).getNombre()%></b></td> <td>----- Descripción: <b><%=listProd.get(i).getDescripcion()%></b></td> <td>----- Precio: <b><%=listProd.get(i).getPrecio()%></b></td><td><b><img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b></td><td><b><button class ="btn" type="submit" >Añadir al carrito</button></b></li></td>
+                                                        <%}%>
+                                                </tr>
                                             </ul>
                                             <%} else {%>
                                             <p class="textosCentrados">No hay productos disponibles de esta categoría.</p>

@@ -34,13 +34,21 @@ public class ObtenerProductos extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String action = request.getParameter("animal");//Recoge la peticion 
+        String animal = request.getParameter("animal");//Recoge la peticion 
+        String categoria = request.getParameter("categoria");
         String url = "/catalogo.jsp";
-       
-        if (action != null) {
-            ArrayList<Producto> listProductosCat = new ArrayList<Producto>(ProductoDB.buscarProducto(action));//
-            request.setAttribute("listProd", listProductosCat);
-            request.setAttribute("cat", action);
+        if (animal != null & categoria != null){
+                ArrayList<Producto> listProductosCat = new ArrayList<Producto>(ProductoDB.buscarProducto(animal,categoria));//
+                request.setAttribute("listProd", listProductosCat);
+                request.setAttribute("animal", animal);
+       }
+        else{
+            if (animal != null) {
+                ArrayList<Producto> listProductosCat = new ArrayList<Producto>(ProductoDB.buscarProducto(animal));//
+                request.setAttribute("listProd", listProductosCat);
+                request.setAttribute("animal", animal);
+                request.setAttribute("categoria", categoria);
+            }
         }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
