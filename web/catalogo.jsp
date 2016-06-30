@@ -46,7 +46,7 @@
                                             <ul>
                                                 <% for (int i = 0; i < listProd.size(); i++) {%>
                                                 <tr>
-                                                    <td><li>Nombre producto: <b><%=listProd.get(i).getNombre()%></b></td> <td>----- Descripción: <b><%=listProd.get(i).getDescripcion()%></b></td> <td>----- Precio: <b><%=listProd.get(i).getPrecio()%></b></td><td><b><img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b></td><td><b><button class ="btn" type="submit" >Añadir al carrito</button></b></li></td>
+                                                    <td><li><b><%=listProd.get(i).getNombre()%></b></td> <td><b><%=listProd.get(i).getDescripcion()%></b></td> <td>Precio unidad: <b><%=listProd.get(i).getPrecio()%></b></td><td><b><img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b></td><td><b><button class ="btn" type="submit" >Añadir al carrito</button></b></li></td>
                                                         <%}%>
                                                 </tr>
                                             </ul>
