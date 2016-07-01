@@ -5,23 +5,26 @@
  */
 package Servlet;
 
+import ModeloDB.UsuarioDB;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Modelo.Usuario;
-import ModeloDB.UsuarioDB;
 /**
  *
  * @author Dawn_
  */
-public class AccederAlSitio extends HttpServlet {
-   private String url;
+@WebServlet(name = "Login", urlPatterns = {"/Login"})
+
+public class Login extends HttpServlet {
+
+    private String url;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,11 +44,12 @@ public class AccederAlSitio extends HttpServlet {
                 // Recuperamos del formulario de acceso.html el usuario y la contraseña introducidas por el usuario
                 String nombreUsuario = request.getParameter("nick");
                 String clave = request.getParameter("password");
-
+      
                 //En primer lugar comprobamos si el usuario registrado existe en la base de datos
                 if (!UsuarioDB.isUsuarioRegistrado(nombreUsuario)) {
                     //Si el usuario no existe en la base de datos , redireccioamos a la pagina de error
                     System.out.println("Usuario No Registrado");
+         
                     request.setAttribute("textoError", "No existe el usuario en la base de datos");
                     this.url = "/error.jsp";
                 }
@@ -59,13 +63,14 @@ public class AccederAlSitio extends HttpServlet {
                 else {
                     //Una vez se ha comprobado que el usuario existe y que ha introducido su contraseña de forma correcta se inicia la sesión
                     sesion.setAttribute("nombreUsuario", nombreUsuario);
-                    this.url = "/miperfil.jsp";
+                    this.url = "/index.jsp";
                 }
             // Si el usuario introduce la direccion de este servlet de forma manual en la barra de direcciones 
             // o llega como resultado de una "navegación hacia atras"  le redirigimos a la página correspondiente
             } else {  
                 this.url = "/perfil.jsp";
             }
+            
         } catch (Exception e) {
             //En caso de algun error , redireccionamos a una pagina destinada a este fin
             request.setAttribute("textoError", e);
@@ -74,9 +79,9 @@ public class AccederAlSitio extends HttpServlet {
             RequestDispatcher respuesta = getServletContext().getRequestDispatcher(this.url);
             respuesta.forward(request, response);
         }
-    }
+    
 
-
+}
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

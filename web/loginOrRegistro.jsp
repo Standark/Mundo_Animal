@@ -67,9 +67,9 @@
 							Nick:
 						</td>
 						<td>
-							<form action="#" method="post">
+							<form action="AccederAlSitio" method="post">
 							<input type="text" id="nick" name="nick" value="" />
-							</form>
+							
 						</td>
 					</tr>
 					<td><br></td>
@@ -78,7 +78,7 @@
 							Contraseña:
 						</td>
 						<td>
-							<form action="AccederAlSitio" method="post">
+						
 							<input type="password" id="contrasenya1" name="contrasenya1" value="" />
 							</form>
 						</td>

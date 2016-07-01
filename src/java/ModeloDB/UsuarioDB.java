@@ -85,13 +85,14 @@ public class UsuarioDB {
         return usuario;
     }
     /*Busca si un usuario esta registrado*/
-public static boolean isUsuarioRegistrado(String nombreUsuario) {
+
+    public static boolean isUsuarioRegistrado(String nombreUsuario) {
 
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT nombreUsuario FROM USUARIO"
+        String query = "SELECT nombreUsuario FROM USUARIO "
                 + "WHERE NICK = ?";
 
         try {
@@ -110,7 +111,6 @@ public static boolean isUsuarioRegistrado(String nombreUsuario) {
         }
 
     }
-
 
 
     public static List<Usuario> buscarUsuario(String s) {

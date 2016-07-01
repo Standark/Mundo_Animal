@@ -4,9 +4,25 @@
         <servlet-name>ObtenerProductos</servlet-name>
         <servlet-class>Servlet.ObtenerProductos</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Servlet.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Registro</servlet-name>
+        <servlet-class>Servlet.Registro</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ObtenerProductos</servlet-name>
         <url-pattern>/ObtenerProductos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Registro</servlet-name>
+        <url-pattern>/Registro</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

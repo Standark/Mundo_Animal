@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+
 import Modelo.Usuario;
 import ModeloDB.UsuarioDB;
 import ModeloDB.UsuarioDB;
@@ -17,6 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +28,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Dawn_
  */
-public class RealizarRegistro extends HttpServlet {
+@WebServlet(name = "Registro", urlPatterns = {"/Registro"})
+
+public class Registro extends HttpServlet {
     private String url;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -132,7 +136,8 @@ public class RealizarRegistro extends HttpServlet {
         }
     }
 
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -171,6 +176,4 @@ public class RealizarRegistro extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-
 }
-
