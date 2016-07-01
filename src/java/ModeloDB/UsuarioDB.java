@@ -15,7 +15,7 @@ import java.util.List;
  * @author Roberto
  */
 public class UsuarioDB {
-
+/*Inserta el usuario nuevo con los datos que este ha proporcionado*/
     public static int insertar(Usuario usuarioNuevo) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -48,7 +48,7 @@ public class UsuarioDB {
             return 0;
         }
     }
-
+/*Saca los datos en relacion al nick*/
     public static Usuario getUsuarioPorNick(String nombreUsuario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -74,6 +74,7 @@ public class UsuarioDB {
                         rs.getInt("telefono"),
                         rs.getDate("fechaNac"));
             }
+            
             ps.close();
             pool.freeConnection(connection);
 
@@ -83,6 +84,34 @@ public class UsuarioDB {
         }
         return usuario;
     }
+    /*Busca si un usuario esta registrado*/
+public static boolean isUsuarioRegistrado(String nombreUsuario) {
+
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT nombreUsuario FROM USUARIO"
+                + "WHERE NICK = ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, nombreUsuario);
+            rs = ps.executeQuery();
+            boolean res = rs.next();
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+
 
     public static List<Usuario> buscarUsuario(String s) {
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -121,120 +150,35 @@ public class UsuarioDB {
         }
     }
     
-    public static ArrayList<Usuario> buscarUsuarioPorLocalidad(String s) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        ArrayList<Usuario> resultado = new ArrayList<Usuario>();
-        String query = "SELECT * FROM USUARIO WHERE (CIUDAD = ?) OR (PROVINCIA = ?)";
-
-        try {
-            ps = connection.prepareStatement(query);
-            ps.setString(1,s);
-            ps.setString(2,s);
-            ResultSet res = ps.executeQuery();
-            while(res.next()){
-                Usuario usuario = new Usuario(res.getInt("id"),
-                        res.getString("nomre"),
-                        res.getString("apellidos"),
-                        res.getString("nick"),
-                        res.getString("password"),
-                        res.getString("direccion"),
-                        res.getInt("cp"),
-                        res.getString("mail"),
-                        res.getString("ciudad"),
-                        res.getString("provincia"),
-                        res.getInt("telefono"),
-                        res.getDate("fechaNac"));
-                resultado.add(usuario);
-            }
-            ps.close();
-            pool.freeConnection(connection);
-            return resultado;
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return resultado;
-        }
-    }
     
-    public static Usuario getUsuarioPorId(int idProducto) {
+    
+/*Comprueba que la contraseña es correcta*/
+    public static boolean isClaveCorrecta(String nombreUsuario, String clave) {
+
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        Usuario usuario = null;
-        String query = "SELECT * FROM USUARIO WHERE ID= ?";
+        ResultSet rs = null;
+        String query = "SELECT * FROM USUARIO "
+                + "WHERE NICK = ? AND PASSWORD = ?";
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setInt(1, idProducto);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                usuario = new Usuario(rs.getInt("id"),
-                        rs.getString("nomre"),
-                        rs.getString("apellidos"),
-                        rs.getString("nick"),
-                        rs.getString("password"),
-                        rs.getString("direccion"),
-                        rs.getInt("cp"),
-                        rs.getString("mail"),
-                        rs.getString("ciudad"),
-                        rs.getString("provincia"),
-                        rs.getInt("telefono"),
-                        rs.getDate("fechaNac"));
-            }
-            ps.close();
-            pool.freeConnection(connection);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-        return usuario;
-    }
-
-    public static int modificarProducto(int id, 
-            String nombre, 
-            String apellidos,
-            String nick,
-            String password,
-            String direccion,
-            int cp,
-            String mail,
-            String ciudad,
-            String provincia,
-            int telefono, 
-            Date fechaNac) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps;
-        String query
-                = "UPDATE PRODUCTO SET NOMBRE = ? , DESCRIPCION = ? , PRECIO = ? , IMAGEN = ? "
-                + ", VALORACION = ? , ANIMAL = ? , CATEGORIA = ? WHERE id=?";
-        try {
-            ps = connection.prepareStatement(query);
-            ps.setString(1, nombre);
-            ps.setString(2, apellidos);
-            ps.setString(3, nick);
-            ps.setString(4, password);
-            ps.setString(5, direccion);
-            ps.setInt(6, cp);
-            ps.setString(7, mail);
-            ps.setString(8, ciudad);
-            ps.setString(9, provincia);
-            ps.setInt(10, telefono);
-            ps.setDate(11,fechaNac);
-            ps.setInt(12, id);
-            int res = ps.executeUpdate();
+            ps.setString(1, nombreUsuario);
+            ps.setString(2, clave);
+            rs = ps.executeQuery();
+            boolean res = rs.next();
+            rs.close();
             ps.close();
             pool.freeConnection(connection);
             return res;
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
-            return 0;
+            return false;
         }
     }
+    
 /* es posible que haya que borrarlo
     public static String getNombredelProducto(int idProducto) {
         ConnectionPool pool = ConnectionPool.getInstance();

@@ -152,10 +152,10 @@ img.aligncenter {
     }
 
 #buscar{
-    width:254px;
+        width:254px;
 	float:right;
 	height:15px;
-	padding-top:15px;
+	padding:10px 2px 15px 4px;
 	}
 
 	

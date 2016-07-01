@@ -1,15 +1,16 @@
 <link rel="stylesheet" href="style.css" />
 <div id="menu">
 		<ul>
-		  <li><a href="../Zoo/Zoo-Portada.html">Zoológico</a></li>
-		  <li class="current_page_item"><a href="Tienda-Portada.html">Tienda</a></li>
-		  <li><a href="../Veterinario/Veterinario.index.html">veterinario</a></li>
-		  <li>&nbsp;</li>
-          
-		  <li></li>
+		
+		</ul>
+<div id="logeameOrRegistrame">
+    <ul>
+		  <li><a href="loginOrRegistro.jsp">REGISTRO Y LOGIN</a></li>
+		  <
           
 		  <li></li>
 		</ul>
+    </div>
      <div id="buscar">
                <form method="get" action="/search" id="search">
                   <input name="q" type="text" size="40" placeholder="Introduce tu búsqueda..." />

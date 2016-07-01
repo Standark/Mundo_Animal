@@ -35,7 +35,7 @@
        
 	<section>
 	
-		<form action="" class="contact-form" onsubmit="return validar(this);">				
+		<form action="RealizarRegistro" class="contact-form" onsubmit="return validar(this);">				
 			<div class="formulario">
 				<div class="column">
 					<label for="nombre">Nombre <span>(requerido)</span></label>
