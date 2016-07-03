@@ -96,7 +96,7 @@ public class Registro extends HttpServlet {
                 //conseguido insertarlo y 1 en caso contrario
                 Usuario nuevoUsuario = new Usuario( id,  nombre,  apellidos,  nick,  password,  direccion,  cp,  mail,  ciudad,  provincia,  telefono,  fechaNac);
                 
-                System.out.println("hemos llegado aqui");
+               
                 if (UsuarioDB.insertar(nuevoUsuario) == 0) {
                     request.setAttribute("textoError", "No se han guardado correctamente los datos");
                     this.url = "/error.jsp";
