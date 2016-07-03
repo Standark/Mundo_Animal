@@ -61,18 +61,18 @@ public class UsuarioDB {
             ps.setString(1, nombreUsuario);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                usuario = new Usuario(rs.getInt("id"),
-                        rs.getString("nomre"),
-                        rs.getString("apellidos"),
-                        rs.getString("nick"),
-                        rs.getString("password"),
-                        rs.getString("direccion"),
-                        rs.getInt("cp"),
-                        rs.getString("mail"),
-                        rs.getString("ciudad"),
-                        rs.getString("provincia"),
-                        rs.getInt("telefono"),
-                        rs.getDate("fechaNac"));
+                usuario = new Usuario(rs.getInt("ID"),
+                        rs.getString("NOMBRE"),
+                        rs.getString("APELLIDOS"),
+                        rs.getString("NICK"),
+                        rs.getString("PASSWORD"),
+                        rs.getString("DIRECCION"),
+                        rs.getInt("CP"),
+                        rs.getString("MAIL"),
+                        rs.getString("CIUDAD"),
+                        rs.getString("PROVINCIA"),
+                        rs.getInt("TELEFONO"),
+                        rs.getDate("FECHA_NAC"));
             }
             
             ps.close();
@@ -127,18 +127,18 @@ public class UsuarioDB {
             ps.setString(3,s);
             ResultSet res = ps.executeQuery();
             while(res.next()){
-                Usuario usuario = new Usuario(res.getInt("id"),
-                        res.getString("nomre"),
-                        res.getString("apellidos"),
-                        res.getString("nick"),
-                        res.getString("password"),
-                        res.getString("direccion"),
-                        res.getInt("cp"),
-                        res.getString("mail"),
-                        res.getString("ciudad"),
-                        res.getString("provincia"),
-                        res.getInt("telefono"),
-                        res.getDate("fechaNac"));
+                Usuario usuario = new Usuario(res.getInt("ID"),
+                        res.getString("NOMBRE"),
+                        res.getString("APELLIDOS"),
+                        res.getString("NICK"),
+                        res.getString("PASSWORD"),
+                        res.getString("DIRECCION"),
+                        res.getInt("CP"),
+                        res.getString("MAIL"),
+                        res.getString("CIUDAD"),
+                        res.getString("PROVINCIA"),
+                        res.getInt("TELEFONO"),
+                        res.getDate("FECHA_NAC"));
                 resultado.add(usuario);
             }
             ps.close();

@@ -50,9 +50,9 @@ public class PedidoDB {
             ps.setInt(1, idCliente);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                pedido = new Pedido(rs.getInt("id"),
-                        rs.getInt("id_cliente"),
-                        rs.getDate("fecha_alta"));
+                pedido = new Pedido(rs.getInt("ID"),
+                        rs.getInt("ID_CLIENTE"),
+                        rs.getDate("FECHA_ALTA"));
             }
             ps.close();
             pool.freeConnection(connection);

@@ -113,11 +113,11 @@ public class DetPedDB {
             ps.setInt(1,i);
             ResultSet res = ps.executeQuery();
             while(res.next()){
-                DetPed producto = new DetPed(res.getInt("id"),
-                        res.getInt("id_pedido"),
-                        res.getInt("id_producto"),
-                        res.getInt("cantidad"),
-                        res.getDouble("precio"));
+                DetPed producto = new DetPed(res.getInt("ID"),
+                        res.getInt("ID_PEDIDO"),
+                        res.getInt("IDPRODUCTO"),
+                        res.getInt("CANTIDAD"),
+                        res.getDouble("PRECIO"));
                 resultado.add(producto);
             }
             ps.close();
@@ -142,11 +142,11 @@ public class DetPedDB {
             ps.setInt(1, idDetPed);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                detPed = new DetPed(rs.getInt("id"),
-                        rs.getInt("id_pedido"),
-                        rs.getInt("id_producto"),
-                        rs.getInt("cantidad"),
-                        rs.getDouble("precio"));
+                detPed = new DetPed(rs.getInt("ID"),
+                        rs.getInt("ID_PEDIDO"),
+                        rs.getInt("ID_PRODUCTO"),
+                        rs.getInt("CANTIDAD"),
+                        rs.getDouble("PRECIO"));
             }
             ps.close();
             pool.freeConnection(connection);

@@ -145,7 +145,7 @@ public class ComentarioDB {
         PreparedStatement ps;
         String query
                 = "UPDATE COMENTARIO SET ID_CLIENTE = ? , ID_PRODUCTO = ? , TITULO = ? , FECHA = ? "
-                + ", COMENTARIO = ?, ID = ?";
+                + ", COMENTARIO = ? WHERE ID = ?";
         try {
             ps = connection.prepareStatement(query);
             ps.setInt(1, idCliente);
