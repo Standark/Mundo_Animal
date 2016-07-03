@@ -51,7 +51,7 @@
 				
 						 				 
 				
-				<button class="btn" type="submit" id="registrar"><a href="/regitrar.jsp">Registrarse</button>
+				<button class="btn" ><a href="regitrar.jsp">Registrarse</button>
                 	
 				
                 </td>
@@ -67,8 +67,8 @@
 							Nick:
 						</td>
 						<td>
-							<form action="AccederAlSitio" method="post">
-							<input type="text" id="nick" name="nick" value="" />
+							  <form action="Login" method="post">
+                                                                <input type="text" name="nick" value="usuario">
 							
 						</td>
 					</tr>
@@ -79,8 +79,8 @@
 						</td>
 						<td>
 						
-							<input type="password" id="contrasenya1" name="contrasenya1" value="" />
-							</form>
+							 <input type="password" name="password" value="contraseña">
+                                                         
 						</td>
 					</tr>
 					<td><br></td>
@@ -88,6 +88,8 @@
 				</table>
                  
                  <button class="btn" type="submit" id="iniciar" align="center">Iniciar</button>
+                 							</form>
+
                 </td>              
             </tr>
          
