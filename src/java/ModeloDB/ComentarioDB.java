@@ -1,8 +1,11 @@
 package ModeloDB;
 
 import BasedeDatos.ConnectionPool;
+import Modelo.Comentario;
+import Modelo.Usuario;
 import Modelo.Producto;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,22 +18,21 @@ import java.util.List;
  */
 public class ComentarioDB {
 
-    public static int insertar(Producto productoNuevo) {
+    public static int insertar(Comentario comentarioNuevo) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         String query
-                = "INSERT INTO PRODUCTOS (ID, NOMBRE, DESCRIPCION, PRECIO, IMAGEN, VALORACION, ANIMAL, CATEGORIA) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                = "INSERT INTO COENTARIO (ID, ID_CLIENTE, ID_PRODUCTO, PUNTUACION, TITULO, FECHA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, productoNuevo.getNombre());
-            ps.setString(2, productoNuevo.getDescripcion());
-            ps.setDouble(3, productoNuevo.getPrecio());
-            ps.setString(4, productoNuevo.getImagen());
-            ps.setInt(5, productoNuevo.getValoracion());
-            ps.setString(6, productoNuevo.getAnimal());
-            ps.setString(7, productoNuevo.getCategoria());
+            ps.setInt(1, comentarioNuevo.getIdCliente());
+            ps.setInt(2, comentarioNuevo.getIdProducto());
+            ps.setInt(3, comentarioNuevo.getPuntuacion());
+            ps.setString(4, comentarioNuevo.getTitulo());
+            ps.setDate(5, comentarioNuevo.getFecha());
+            ps.setString(6, comentarioNuevo.getComentario());
             int res = ps.executeUpdate();
             ps.close();
             pool.freeConnection(connection);
@@ -41,60 +43,26 @@ public class ComentarioDB {
         }
     }
 
-    public static Producto getProductoPorNombre(String nombreProducto) {
+    public static List<Comentario> getComentarioPorUsuario(Usuario usuariobusc) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        Producto producto = null;
-        String query = "SELECT * FROM PRODUCTOS WHERE NOMBRE = ?";
+        List<Comentario> resultado = new ArrayList<Comentario>();
+        String query = "SELECT DISTINCT a.* FROM COMENTARIO a WHERE a.ID_CLIENTE = ?";
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, nombreProducto);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                producto = new Producto(rs.getInt("id"),
-                        rs.getString("nomre"),
-                        rs.getString("descripcion"),
-                        rs.getDouble("precio"),
-                        rs.getString("imagen"),
-                        rs.getInt("valoracion"),
-                        rs.getString("animal"),
-                        rs.getString("categoria"));
-            }
-            ps.close();
-            pool.freeConnection(connection);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-        return producto;
-    }
-
-    public static List<Producto> buscarProducto(String s) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        List<Producto> resultado = new ArrayList<Producto>();
-        String query = "SELECT DISTINCT a.* FROM PRODUCTO a WHERE ((a.NOMBRE = ?) OR (a.ANIMAL = ?) OR (a.CATEGORIA = ?))";
-
-        try {
-            ps = connection.prepareStatement(query);
-            ps.setString(1,s);
-            ps.setString(2,s);
-            ps.setString(3,s);
+            ps.setInt(1,usuariobusc.getId());
             ResultSet res = ps.executeQuery();
             while(res.next()){
-                Producto producto = new Producto(res.getInt("id"),
-                        res.getString("nombre"),
-                        res.getString("descripcion"),
-                        res.getDouble("precio"),
-                        res.getString("imagen"),
-                        res.getInt("valoracion"),
-                        res.getString("animal"),
-                        res.getString("categoria"));
-                resultado.add(producto);
+                Comentario comentario = new Comentario(res.getInt("ID"),
+                        res.getInt("ID_CLIENTE"),
+                        res.getInt("ID_PRODUCTO"),
+                        res.getInt("VALORACIOM"),
+                        res.getString("TITULO"),
+                        res.getDate("FECHA"),
+                        res.getString("COMENTARIO"));
+                resultado.add(comentario);
             }
             ps.close();
             pool.freeConnection(connection);
@@ -105,58 +73,55 @@ public class ComentarioDB {
         }
     }
     
-    public static ArrayList<Producto> buscarProductosPorValoracion(int i) {
+    public static List<Comentario> getComentarioPorProducto(Producto productobusc) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        ArrayList<Producto> resultado = new ArrayList<Producto>();
-        String query = "SELECT * FROM PRODUCTOS WHERE VALORACION = ?";
+        List<Comentario> resultado = new ArrayList<Comentario>();
+        String query = "SELECT DISTINCT a.* FROM COMENTARIO a WHERE a.ID_PRODUCTO = ?";
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setInt(1,i);
+            ps.setInt(1,productobusc.getId());
             ResultSet res = ps.executeQuery();
             while(res.next()){
-                Producto producto = new Producto(res.getInt("id"),
-                        res.getString("nombre"),
-                        res.getString("descripcion"),
-                        res.getDouble("precio"),
-                        res.getString("imagen"),
-                        res.getInt("valoracion"),
-                        res.getString("animal"),
-                        res.getString("categoria"));
-                resultado.add(producto);
+                Comentario comentario = new Comentario(res.getInt("ID"),
+                        res.getInt("ID_CLIENTE"),
+                        res.getInt("ID_PRODUCTO"),
+                        res.getInt("VALORACIOM"),
+                        res.getString("TITULO"),
+                        res.getDate("FECHA"),
+                        res.getString("COMENTARIO"));
+                resultado.add(comentario);
             }
             ps.close();
             pool.freeConnection(connection);
             return resultado;
-            
         } catch (SQLException e) {
             e.printStackTrace();
             return resultado;
         }
     }
     
-    public static Producto getProductoPorId(int idProducto) {
+    public static Comentario getComentarioPorId(int idComentario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        Producto producto = null;
-        String query = "SELECT * FROM PRODUCTO WHERE ID= ?";
+        Comentario comentario = null;
+        String query = "SELECT * FROM COMENTARIO WHERE ID= ?";
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setInt(1, idProducto);
+            ps.setInt(1, idComentario);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                producto = new Producto(rs.getInt("id"),
-                        rs.getString("nombre"),
-                        rs.getString("diario"),
-                        rs.getDouble("precio"),
-                        rs.getString("imagen"),
-                        rs.getInt("valoracion"),
-                        rs.getString("animal"),
-                        rs.getString("categoria"));
+                comentario = new Comentario(rs.getInt("id"),
+                        rs.getInt("ID_CLIENTE"),
+                        rs.getInt("ID_PRODUCTO"),
+                        rs.getInt("PUNTUACION"),
+                        rs.getString("TITULO"),
+                        rs.getDate("FECHA"),
+                        rs.getString("COMENTARIO"));
             }
             ps.close();
             pool.freeConnection(connection);
@@ -165,33 +130,31 @@ public class ComentarioDB {
             e.printStackTrace();
 
         }
-        return producto;
+        return comentario;
     }
 
-    public static int modificarProducto(int id,
-            String nombre,
-            String descripcion,
-            double precio,
-            String imagen,
-            int valoracion,
-            String animal,
-            String categoria) {
+    public static int modificarComentario(int id,
+            int idCliente,
+            int idProducto,
+            int puntuacion,
+            String titulo,
+            Date fecha,
+            String comentario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         String query
-                = "UPDATE PRODUCTO SET NOMBRE = ? , DESCRIPCION = ? , PRECIO = ? , IMAGEN = ? "
-                + ", VALORACION = ? , ANIMAL = ? , CATEGORIA = ? WHERE id=?";
+                = "UPDATE COMENTARIO SET ID_CLIENTE = ? , ID_PRODUCTO = ? , TITULO = ? , FECHA = ? "
+                + ", COMENTARIO = ?, ID = ?";
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, nombre);
-            ps.setString(2, descripcion);
-            ps.setDouble(3, precio);
-            ps.setString(4, imagen);
-            ps.setInt(5, valoracion);
-            ps.setString(6, animal);
-            ps.setString(7, categoria);
-            ps.setInt(8, id);
+            ps.setInt(1, idCliente);
+            ps.setInt(2, idProducto);
+            ps.setInt(3, puntuacion);
+            ps.setString(4, titulo);
+            ps.setDate(5, fecha);
+            ps.setString(6, comentario);
+            ps.setInt(7, id);
             int res = ps.executeUpdate();
             ps.close();
             pool.freeConnection(connection);
