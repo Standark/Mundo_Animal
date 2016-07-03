@@ -16,7 +16,7 @@ public class Comentario {
     private String comentario;
     private Date fecha;   	
     
-    public Comentario(int id, int idCliente, int idProducto, int puntuacion, String titulo, String comentario, Date fecha){
+    public Comentario(int id, int idCliente, int idProducto, int puntuacion, String titulo, Date fecha, String comentario){
         this.id = id;
         this.idCliente = idCliente;
         this.idProducto = idProducto;
@@ -67,7 +67,7 @@ public class Comentario {
      * 
      * @return idProducto
      */
-    public int getIdProductor() {
+    public int getIdProducto() {
         return idProducto;
     }
     /**
