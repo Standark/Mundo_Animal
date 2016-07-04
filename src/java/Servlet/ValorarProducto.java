@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Servlet;
+/*package Servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -28,9 +28,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Roberto
  */
-@WebServlet(name = "ValorarProducto", urlPatterns = {"/ValorarProducto"})
+//@WebServlet(name = "ValorarProducto", urlPatterns = {"/ValorarProducto"})
 
-public class ValorarProducto extends HttpServlet {
+//public class ValorarProducto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,7 +41,7 @@ public class ValorarProducto extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private String url;
+ /*   private String url;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -140,7 +140,7 @@ public class ValorarProducto extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+ /*   @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -154,7 +154,7 @@ public class ValorarProducto extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
+ /*   @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
@@ -165,9 +165,9 @@ public class ValorarProducto extends HttpServlet {
      *
      * @return a String containing servlet description
      */
-    @Override
+  /*  @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
-}
+}*/

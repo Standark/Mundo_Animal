@@ -24,10 +24,6 @@
         <servlet-name>Registro</servlet-name>
         <url-pattern>/Registro</url-pattern>
     </servlet-mapping>
-     <servlet-mapping>
-        <servlet-name>ValorarProducto</servlet-name>
-        <url-pattern>/ValorarProducto</url-pattern>
-    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
