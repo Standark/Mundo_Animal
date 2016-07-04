@@ -6,7 +6,7 @@
 <div id="logeameOrRegistrame">
     <ul>
 		  <li><a href="loginOrRegistro.jsp">REGISTRO Y LOGIN</a></li>
-		  <
+		  
           
 		  <li></li>
 		</ul>
