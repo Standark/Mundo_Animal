@@ -5,7 +5,7 @@
  */
 package ModeloDB.Travelbook;
 
-import baseDatos.ConnectionPool;
+import BasedeDatos.ConnectionPool;
 import dominio.Foto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

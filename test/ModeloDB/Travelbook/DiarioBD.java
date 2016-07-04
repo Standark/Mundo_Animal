@@ -1,6 +1,6 @@
 package ModeloDB.Travelbook;
 
-import baseDatos.ConnectionPool;
+import BasedeDatos.ConnectionPool;
 import dominio.Dia;
 import dominio.Diario;
 import java.sql.Connection;
