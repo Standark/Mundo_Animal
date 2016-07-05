@@ -63,12 +63,10 @@ public class Registro extends HttpServlet {
                 String ciudad = request.getParameter("ciudad");
                 String provincia = request.getParameter("provincia");
                 int telefono = Integer.parseInt(request.getParameter("telefono"));
-
                 String dateInString = request.getParameter("nacimiento");
+
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
                 Date fechaNac = null;
-
-               
                 try {
                     fechaNac = (Date) formatter.parse(dateInString);
                 } catch (ParseException e) {
@@ -83,7 +81,7 @@ public class Registro extends HttpServlet {
                     request.setAttribute("textoError", "Ya hay un usuario registrado con ese nick.");
                     this.url = "/error.jsp";
                     System.out.println("Ya hay usuario con ese nick.");
-                } else{
+                } else {
                     System.out.println("No hay usuario con ese nick.");
                 }
 

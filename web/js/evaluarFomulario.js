@@ -6,10 +6,22 @@ function revisar(elemento) {
     }
 }
 
-function revisaremail(elemento) {
+function revisarEmail(elemento) {
     if (elemento.value != "") {
         var dato = elemento.value;
         var expresion = /^([a-zA-Z0-9_.-])+@(([a-zA-z0-9-])+.)+([a-zA-Z0-9-]{2,4})+$/;
+        if (!expresion.test(dato)) {
+            elemento.className = 'error';
+        } else {
+            elemento.className = 'form-input';
+        }
+    }
+}
+
+function revisarFecha(elemento) {
+    if (elemento.value != "") {
+        var dato = elemento.value;
+        var expresion = /[0-3][0-9][\-][0-1][0-9][\-][0-2][0-9][0-9][0-9]/;
         if (!expresion.test(dato)) {
             elemento.className = 'error';
         } else {
@@ -39,6 +51,17 @@ function validar(form) {
         alert('No has repetido tu contraseña'); // Mensaje a mostrar
         return false; //devolvemos un valor negativo
     }
+    if (form.nacimiento.value === "") { //Si este campo está vacío
+        alert('No has escrito tu fecha de nacimiento'); // Mensaje a mostrar
+        return false; //devolvemos un valor negativo
+    } else {
+        var dato = form.nacimiento.value;
+        var expresion = /[0-3][0-9][\-][0-1][0-9][\-][0-2][0-9][0-9][0-9]/;
+        if (!expresion.test(dato)) {
+            alert('La fecha de nacimiento es erronea.\nEjemplo: dd-mm-aaaa');
+            return false;
+        }
+    }
     if (form.telefono.value === "") { //Si este campo está vacío
         alert('No has escrito tu telefono'); // Mensaje a mostrar
         return false; //devolvemos un valor negativo
@@ -67,10 +90,5 @@ function validar(form) {
         alert('No has escrito tu telefono'); // Mensaje a mostrar
         return false; //devolvemos un valor negativo
     }
-    if (form.nacimiento.value === "") { //Si este campo está vacío
-        alert('No has escrito tu fecha de nacimiento'); // Mensaje a mostrar
-        return false; //devolvemos un valor negativo
-    }
-
     return true; // Si esta todo bien, devolvemos Ok, positivo
 }
