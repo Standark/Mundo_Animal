@@ -67,7 +67,6 @@ function validar(form) {
         alert('No has escrito tu telefono'); // Mensaje a mostrar
         return false; //devolvemos un valor negativo
     }
-
     if (form.nacimiento.value === "") { //Si este campo está vacío
         alert('No has escrito tu fecha de nacimiento'); // Mensaje a mostrar
         return false; //devolvemos un valor negativo
