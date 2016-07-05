@@ -9,9 +9,9 @@
             <ul>
                 
                 <li class="orange">
-                    <a href="cesta.html" class="carrito"></a>
+                    <a href="Cesta?action=mostrar" class="carrito"></a>
                     <ul>
-                       <li><a href="cesta.html">Carrito</a></li>
+                       <li><a href="Cesta?action=mostrar">Carrito</a></li>
                     </ul>
                 </li>
                  <li class="blue">
