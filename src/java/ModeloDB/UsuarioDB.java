@@ -176,6 +176,46 @@ public class UsuarioDB {
             e.printStackTrace();
             return false;
         }
+        
+    }
+    public static int modificarProducto(int id,
+            String nombre,
+            String apellido,
+            String password,
+            String direccion,
+            int cp,
+            String mail,
+            String ciudad,
+            String provincia,
+            int telefono,
+            Date fechaNac) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        String query
+                = "UPDATE USUARIO SET NOMBRE = ? , APELLIDO = ? , PASSWORD = ? , DIRECCION = ? "
+                + ", CP = ? , MAIL = ? , CIUDAD = ? , PROVINCIA = ? , TELEFONO = ? WHERE ID=?";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, nombre);
+            ps.setString(2, apellido);
+            ps.setString(3, password);
+            ps.setString(4, direccion);
+            ps.setInt(5, cp);
+            ps.setString(6, mail);
+            ps.setString(7, ciudad);
+            ps.setString(8, provincia);
+            ps.setInt(9, telefono);
+            ps.setInt(10, id);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
     
 /* es posible que haya que borrarlo
