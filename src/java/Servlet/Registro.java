@@ -65,9 +65,10 @@ public class Registro extends HttpServlet {
                 int telefono = Integer.parseInt(request.getParameter("telefono"));
 
                 String dateInString = request.getParameter("nacimiento");
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
                 Date fechaNac = null;
 
+               
                 try {
                     fechaNac = (Date) formatter.parse(dateInString);
                 } catch (ParseException e) {
@@ -77,16 +78,20 @@ public class Registro extends HttpServlet {
                 //Password repetida no se recupera por que ya se ha comprobado con javascript en la pagina
                 //jsp que el usuario ha introducido la misma contraseña dos veces y no tiene sentido recuperarla 
                 //en este servlet
+                System.out.println("Comprobamos el nick...");
                 if (UsuarioDB.isUsuarioRegistrado(nick)) {
-                    request.setAttribute("textoError", "Ya hay un usuario registrado con ese nombre");
+                    request.setAttribute("textoError", "Ya hay un usuario registrado con ese nick.");
                     this.url = "/error.jsp";
+                    System.out.println("Ya hay usuario con ese nick.");
+                } else{
+                    System.out.println("No hay usuario con ese nick.");
                 }
 
                 //Guardamos los datos en la BD, al insertar la función puede devolver dos valores, 0 si no ha
                 //conseguido insertarlo y 1 en caso contrario
                 Usuario nuevoUsuario = new Usuario(nombre, apellidos, nick, password, direccion, cp, mail, ciudad, provincia, telefono, fechaNac);
                 if (UsuarioDB.insertar(nuevoUsuario) == 0) {
-                    request.setAttribute("textoError", "No se han guardado correctamente los datos");
+                    request.setAttribute("textoError", "No se han guardado correctamente los datos.");
                     this.url = "/error.jsp";
                 } else {
 
