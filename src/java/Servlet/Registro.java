@@ -68,7 +68,6 @@ public class Registro extends HttpServlet {
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                 Date fechaNac = null;
 
-                System.out.println("\nWoooooooooooooooooooooooooooo\n");
                 try {
                     fechaNac = (Date) formatter.parse(dateInString);
                 } catch (ParseException e) {
@@ -85,8 +84,7 @@ public class Registro extends HttpServlet {
 
                 //Guardamos los datos en la BD, al insertar la función puede devolver dos valores, 0 si no ha
                 //conseguido insertarlo y 1 en caso contrario
-                //      Usuario nuevoUsuario = new Usuario(id, nombre, apellidos, nick, password, direccion, cp, mail, ciudad, provincia, telefono, fechaNac);
-                Usuario nuevoUsuario = new Usuario();
+                Usuario nuevoUsuario = new Usuario(nombre, apellidos, nick, password, direccion, cp, mail, ciudad, provincia, telefono, fechaNac);
                 if (UsuarioDB.insertar(nuevoUsuario) == 0) {
                     request.setAttribute("textoError", "No se han guardado correctamente los datos");
                     this.url = "/error.jsp";
@@ -115,7 +113,7 @@ public class Registro extends HttpServlet {
             //En caso de algun error no previsto , redireccionamos a una pagina destinada a este fin
         } catch (Exception e) {
 
-            request.setAttribute("textoError", "Inesperado, contacte con nosotros.");
+            request.setAttribute("textoError", "Inesperado, contacte con el administrador.");
             this.url = "/error.jsp";
 
             // Sea cual sea el resultado del procesamiento del servlet, se redirecciona a la página que se haya especificado
