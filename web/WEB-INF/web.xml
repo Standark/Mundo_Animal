@@ -12,6 +12,10 @@
         <servlet-name>Registro</servlet-name>
         <servlet-class>Servlet.Registro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Cesta</servlet-name>
+        <servlet-class>Servlet.Cesta</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ObtenerProductos</servlet-name>
         <url-pattern>/ObtenerProductos</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>Registro</servlet-name>
         <url-pattern>/Registro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Cesta</servlet-name>
+        <url-pattern>/Cesta</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
