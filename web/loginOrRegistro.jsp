@@ -51,7 +51,7 @@
 				
 						 				 
 				
-				<button class="btn" ><a href="regitrar.jsp">Registrarse</button>
+                                        <a href="registro.jsp"><button class="btn" >Registrarse</button></a>
                 	
 				
                 </td>
