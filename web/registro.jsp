@@ -53,6 +53,9 @@
                                                     <label for="paswordRep">Repite contraseña <span>(requerido)</span></label>
                                                     <input type="password" name="paswordRep" class="form-input"  placeholder="Repite contraseña" onblur="revisar(this)"/>
 
+                                                    <label for="telefono">Teléfono: <span>(requerido)</span></label>
+                                                    <input type="text" name="telefono" class="form-input" placeholder="983000000" onblur="revisar(this)"/>
+                                                    
                                                     <label for="email">Email <span>(requerido)</span></label>
                                                     <input type="email" name="email" class="form-input"  placeholder="ejemplo@dominio.com" onblur="revisar(this); revisaremail(this);"/>
 
