@@ -46,7 +46,16 @@
                                             <ul>
                                                 <% for (int i = 0; i < listProd.size(); i++) {%>
                                                 <tr>
-                                                    <td><li><b><%=listProd.get(i).getNombre()%></b></td> <td><b><%=listProd.get(i).getDescripcion()%></b></td> <td>Precio unidad: <b><%=listProd.get(i).getPrecio()%></b></td><td><b><img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b></td><td><b><button class ="btn" type="submit" >Añadir al carrito</button></b></li></td>
+                                                    <td><li><b><%=listProd.get(i).getNombre()%></b></td>
+                                                    <td><b><%=listProd.get(i).getDescripcion()%></b></td>
+                                                    <td>Precio unidad: <b><%=listProd.get(i).getPrecio()%></b></td>
+                                                    <td><b><img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b></td>
+                                                    <td><b><form  action="Cesta" method="post">
+                                                                <input type="hidden" name= "producto" value="<%=String.valueOf(listProd.get(i).getId())%>">
+                                                                <input type="hidden" name="action" value="add">
+                                                                <button class ="btn" type="submit" value="añadir" name="btnAñadir">Añadir al carrito</button>
+                                                            </form></b></li>
+                                                    </td>
                                                         <%}%>
                                                 </tr>
                                             </ul>
