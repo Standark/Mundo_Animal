@@ -31,7 +31,7 @@
                 <td rowspan="3">
                  <div id="producto">
                   
-                   <h1>Se ha producido el siguiente errror: <%= request.getAttribute("textoError") %></h1>
+                   <h1>Se ha producido el siguiente errrrrrror: <%= request.getAttribute("textoError") %></h1>
                    
                  <tr>
                  
