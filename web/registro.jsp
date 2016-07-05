@@ -48,10 +48,10 @@
                                         <input type="text" name="nick" class="form-input"  placeholder="Login" onblur="revisar(this);"/>
 					
                                         <label for="password">Contraseña <span>(requerido)</span></label>
-                                        <input type="text" name="password" class="form-input"  placeholder="contraseña" onblur="revisar(this);"/>
+                                        <input type="password" name="password" class="form-input"  placeholder="contraseña" onblur="revisar(this);"/>
                                         
                                          <label for="paswordRep">Repite contraseña <span>(requerido)</span></label>
-                                        <input type="text" name="paswordRep" class="form-input"  placeholder="Repite contraseña" onblur="revisar(this)"/>
+                                        <input type="password" name="paswordRep" class="form-input"  placeholder="Repite contraseña" onblur="revisar(this)"/>
 					
 					<label for="email">Email <span>(requerido)</span></label>
 					<input type="email" name="email" class="form-input"  placeholder="ejemplo@dominio.com" onblur="revisar(this); revisaremail(this);"/>
