@@ -16,6 +16,16 @@ public class Comentario {
     private String comentario;
     private Date fecha;   	
     
+    /**
+     * 
+     * @param id
+     * @param idCliente
+     * @param idProducto
+     * @param puntuacion
+     * @param titulo
+     * @param fecha
+     * @param comentario 
+     */
     public Comentario(int id, int idCliente, int idProducto, int puntuacion, String titulo, Date fecha, String comentario){
         this.id = id;
         this.idCliente = idCliente;
