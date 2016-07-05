@@ -210,7 +210,7 @@ public class ProductoDB {
         PreparedStatement ps;
         String query
                 = "UPDATE PRODUCTO SET NOMBRE = ? , DESCRIPCION = ? , PRECIO = ? , IMAGEN = ? "
-                + ", VALORACION = ? , ANIMAL = ? , CATEGORIA = ? WHERE id=?";
+                + ", VALORACION = ? , ANIMAL = ? , CATEGORIA = ? WHERE ID=?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, nombre);
