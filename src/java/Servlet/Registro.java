@@ -56,18 +56,19 @@ public class Registro extends HttpServlet {
                 // se utiliza request por que esta acción tiene el alcance de una única petición
                 int id =Integer.parseInt(request.getParameter("id"));
                 String nombre = request.getParameter("nombre");
-                String apellidos = request.getParameter("apellidos");
+                String apellidos = request.getParameter("apellido");
                 String nick = request.getParameter("nick");
                 String password = request.getParameter("password");
                 String direccion = request.getParameter("direccion");
-                int cp = Integer.parseInt(request.getParameter("cp"));
-                String mail = request.getParameter("mail");
+                int cp = Integer.parseInt(request.getParameter("codigo"));
+                String mail = request.getParameter("email");
                 String ciudad = request.getParameter("ciudad");
                 String provincia = request.getParameter("provincia");
                 int telefono = Integer.parseInt(request.getParameter("telefono"));
-               
-                String dateInString = request.getParameter("fechaNac");
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+                
+                
+                String dateInString = request.getParameter("nacimiento");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                 Date fechaNac=null;
                 
 

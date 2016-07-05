@@ -36,7 +36,6 @@ public class ObtenerProductos extends HttpServlet {
 
         String animal = request.getParameter("animal");//Recoge la peticion 
         String categoria = request.getParameter("categoria");
-        System.out.println("\n\n\nCategoria: "+categoria);
         String url = "/catalogo.jsp";
         if (animal != null) {
             ArrayList<Producto> listProductosCat;
