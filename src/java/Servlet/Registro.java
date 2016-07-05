@@ -65,13 +65,15 @@ public class Registro extends HttpServlet {
                 int telefono = Integer.parseInt(request.getParameter("telefono"));
                 String dateInString = request.getParameter("nacimiento");
 
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+                System.out.println("Antes del parseo de la fecha");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                 Date fechaNac = null;
                 try {
                     fechaNac = (Date) formatter.parse(dateInString);
                 } catch (ParseException e) {
-                    e.printStackTrace();
+                    System.out.println("Fecha incorrecta.");
                 }
+                System.out.println("Despues del parseo de la fecha");
 
                 //Password repetida no se recupera por que ya se ha comprobado con javascript en la pagina
                 //jsp que el usuario ha introducido la misma contraseña dos veces y no tiene sentido recuperarla 
