@@ -92,8 +92,7 @@ public class UsuarioDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT nombreUsuario FROM USUARIO "
-                + "WHERE NICK = ?";
+        String query = "SELECT NICK FROM USUARIO WHERE NICK = ?";
 
         try {
             ps = connection.prepareStatement(query);

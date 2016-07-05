@@ -36,7 +36,7 @@ public class Login extends HttpServlet {
      */
      protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+this.url = "/index.jsp";
         try {
             HttpSession sesion = request.getSession();
             // Si el usuario no ha iniciado sesión ...
@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
                 // Recuperamos del formulario de acceso.html el usuario y la contraseña introducidas por el usuario
                 String nombreUsuario = request.getParameter("nick");
                 String clave = request.getParameter("password");
-      
+                
                 //En primer lugar comprobamos si el usuario registrado existe en la base de datos
                 if (!UsuarioDB.isUsuarioRegistrado(nombreUsuario)) {
                     //Si el usuario no existe en la base de datos , redireccioamos a la pagina de error

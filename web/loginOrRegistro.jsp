@@ -68,7 +68,7 @@
 						</td>
 						<td>
 							  <form action="Login" method="post">
-                                                                <input type="text" name="nick" value="usuario">
+                                                                <input type="text" name="nick" placeholder="usuario" required="required">
 							
 						</td>
 					</tr>
@@ -79,7 +79,7 @@
 						</td>
 						<td>
 						
-							 <input type="password" name="password" value="contraseña">
+							 <input type="password" name="password" placeholder="contraseña"  required="required">
                                                          
 						</td>
 					</tr>
@@ -87,7 +87,7 @@
 					<td><br></td>
 				</table>
                  
-                 <button class="btn" type="submit" id="iniciar" align="center">Iniciar</button>
+                 <button class="btn" type="submit" value="Login" align="center">Iniciar</button>
                  							</form>
 
                 </td>              
