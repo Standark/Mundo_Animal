@@ -43,7 +43,7 @@ public class MiPerfil extends HttpServlet {
             else{
                 int id =(int) session.getAttribute("id");
                 Usuario usuario = UsuarioDB.getUsuarioPorID(id);
-                request.setAttribute("usur",usuario);
+                request.setAttribute("usuario",usuario);
             }
         }catch(Exception e){
             System.out.println(e);
