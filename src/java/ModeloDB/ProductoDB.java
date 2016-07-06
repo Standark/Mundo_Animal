@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.Integer;
+import java.util.Collections;
 
 /**
  * @author Roberto
@@ -102,19 +104,22 @@ public class ProductoDB {
         }
     }
     
-public static List<Producto> buscarProductoMasComentado(int id) {
+public static List<Producto> buscarProductoUltimoComentado() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         List<Producto> resultado = new ArrayList<Producto>();
-        
-        String query = "SELECT IDPRODUCTO,COUNT(IDPRODUCTO)(*) FROM COMENTARIOS a GROUP BY IDPRODUCTO HAVING a.COUNT(*)>(SELECT b.COUNT(*) FROM COMENTARIO b)/2";
+        int i = 0;
+        String query = "SELECT ID_PRODUCTO, FECHA FROM COMENTARIO ORDER BY FECHA";
         try {
             ps = connection.prepareStatement(query);
-            ps.setInt(1, id);
             ResultSet res = ps.executeQuery();
-            while (res.next()) {
-                Producto producto = new Producto(res.getInt("ID"),
+            while (res.next() || i == 10) {
+                int idProducto = res.getInt("ID_PRODUCTO");
+                resultado.add(ProductoDB.getProductoPorId(idProducto));
+                i++;
+            }
+                /*Producto producto = new Producto(res.getInt("ID"),
                         res.getString("NOMBRE"),
                         res.getString("DESCRIPCION"),
                         res.getDouble("PRECIO"),
@@ -123,9 +128,10 @@ public static List<Producto> buscarProductoMasComentado(int id) {
                         res.getString("ANIMAL"),
                         res.getString("CATEGORIA"));
                 resultado.add(producto);
-            }
+            }*/
             ps.close();
             pool.freeConnection(connection);
+            Collections.reverse(resultado);
             return resultado;
         } catch (SQLException e) {
             e.printStackTrace();
