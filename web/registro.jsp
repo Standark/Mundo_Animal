@@ -51,28 +51,28 @@
                                                     <input type="password" name="password" class="form-input"  placeholder="contraseña" onblur="revisar(this);"/>
 
                                                     <label for="paswordRep">Repite contraseña <span>(requerido)</span></label>
-                                                    <input type="password" name="paswordRep" class="form-input"  placeholder="Repite contraseña" onblur="revisar(this)"/>
+                                                    <input type="password" name="paswordRep" class="form-input"  placeholder="Repite contraseña" onblur="revisar(this);"/>
 
                                                     <label for="nacimiento">Fecha de nacimiento<span>(requerido)</span></label>
                                                     <input type="text" name="nacimiento" class="form-input"  placeholder="01/01/2001" onblur="revisar(this); revisarFecha(this);"/>
 
                                                     <label for="telefono">Teléfono: <span>(requerido)</span></label>
-                                                    <input type="text" name="telefono" class="form-input" placeholder="983000000" onblur="revisar(this)"/>
+                                                    <input type="text" name="telefono" class="form-input" placeholder="983000000" onblur="revisar(this); revisarTelefono(this);"/>
 
                                                     <label for="email">Email <span>(requerido)</span></label>
                                                     <input type="email" name="email" class="form-input"  placeholder="ejemplo@dominio.com" onblur="revisar(this); revisarEmail(this);"/>
 
                                                     <label for="direccion">Direccion <span>(requerido)</span></label>
-                                                    <input type="text" name="direccion" class="form-input" placeholder="calle Olmo nº12 bajo" onblur="revisar(this)"/>
-
-                                                    <label for="ciudad">Ciudad <span>(requerido)</span></label>
-                                                    <input type="text" name="ciudad" class="form-input" placeholder="Madrid" onblur="revisar(this)"/>
-
-                                                    <label for="provincia">Provincia <span>(requerido)</span></label>
-                                                    <input type="text" name="provincia" class="form-input" placeholder="Madrid" onblur="revisar(this)"/>
+                                                    <input type="text" name="direccion" class="form-input" placeholder="calle Olmo nº12 bajo" onblur="revisar(this);"/>
 
                                                     <label for="codigo">Codigo Postal <span>(requerido)</span></label>
-                                                    <input type="text" name="codigo" class="form-input"  placeholder="28080" onblur="revisar(this);"/>
+                                                    <input type="text" name="codigo" class="form-input"  placeholder="28080" onblur="revisar(this); revisarCodigo(this);"/>
+
+                                                    <label for="ciudad">Ciudad <span>(requerido)</span></label>
+                                                    <input type="text" name="ciudad" class="form-input" placeholder="Madrid" onblur="revisar(this);"/>
+
+                                                    <label for="provincia">Provincia <span>(requerido)</span></label>
+                                                    <input type="text" name="provincia" class="form-input" placeholder="Madrid" onblur="revisar(this);"/>
 
                                                 </div>
 
