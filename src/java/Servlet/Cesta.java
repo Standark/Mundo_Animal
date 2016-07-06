@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -81,11 +83,17 @@ public class Cesta extends HttpServlet {
         System.out.println("HOLLLAAAA");
         System.out.println(request.getParameter("producto"));
         
-        
-        if(prods.containsKey(prod)){
-            prods.put(prod, prods.get(prod)+1);
+        Iterator<Entry<Producto,Integer>> it = prods.entrySet().iterator();
+        Entry<Producto,Integer> entry = null;
+        Boolean flag = true;
+        while(it.hasNext()){
+            entry= it.next();
+            if(entry.getKey().getId()==prod.getId()){
+                prods.put(entry.getKey(),entry.getValue()+1);
+                flag = false;
+            }
         }
-        else{
+        if(flag){
             prods.put(prod,1);
         }
         sesion.setAttribute("prods", prods);

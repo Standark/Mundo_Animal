@@ -206,7 +206,7 @@ public static List<Producto> buscarProductoMasComentado(int id) {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         Producto producto = null;
-        String query = "SELECT * FROM PRODUCTO WHERE ID= ?";
+        String query = "SELECT * FROM PRODUCTOS WHERE ID= ?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -244,7 +244,7 @@ public static List<Producto> buscarProductoMasComentado(int id) {
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         String query
-                = "UPDATE PRODUCTO SET NOMBRE = ? , DESCRIPCION = ? , PRECIO = ? , IMAGEN = ? "
+                = "UPDATE PRODUCTOS SET NOMBRE = ? , DESCRIPCION = ? , PRECIO = ? , IMAGEN = ? "
                 + ", VALORACION = ? , ANIMAL = ? , CATEGORIA = ? WHERE id=?";
         try {
             ps = connection.prepareStatement(query);
