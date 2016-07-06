@@ -36,6 +36,7 @@
                                         <table id ="producto-flitros" >
                                             
                                             <% String animal = (String) request.getAttribute("animal");%>
+                                            <% String categoria = (String) request.getAttribute("categoria");%>
 
                                             <% ArrayList<Producto> listProd = (ArrayList<Producto>) request.getAttribute("listProd");%>
                                             <tr>
@@ -56,6 +57,8 @@
                                                             <form  action="Cesta" method="post">
                                                                 
                                                                 <input type="hidden" name= "producto" value="<%=String.valueOf(listProd.get(i).getId())%>">
+                                                                <input type="hidden" name="animal" value="<%=animal%>">
+                                                                <input type="hidden" name ="categoria"value="<%=categoria%>">
                                                                 <input type="hidden" name="action" value="add">
                                                                 <button class ="btn" type="submit" value="añadir" name="btnAñadir">Añadir al carrito</button>
                                                             </form></b></li>

@@ -62,7 +62,12 @@ public class Cesta extends HttpServlet {
 
     private void addProduct(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String url = "/catalogo.jsp";
+        
+        String url= "ObtenerProductos?animal="+request.getParameter("animal");
+        if(request.getAttribute("categoria")!= null){
+            url = url+"&categoria="+request.getParameter("categoria");
+        }
+        System.out.println(url);
         
         HttpSession sesion = request.getSession();
         Map<Producto, Integer> prods;
@@ -84,9 +89,9 @@ public class Cesta extends HttpServlet {
             prods.put(prod,1);
         }
         sesion.setAttribute("prods", prods);
-        //response.sendRedirect("catalogo.jsp");
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
+        response.sendRedirect(url);
+        //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        //dispatcher.forward(request, response);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

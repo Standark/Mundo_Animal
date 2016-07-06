@@ -67,10 +67,12 @@
                             prod= entry.getKey();
                             cant = entry.getValue();
                            %>
+                        <tr>
                            <td><%=prod.getNombre()%></td>
                            <td><%=prod.getPrecio()%></td>
                            <td><%=cant%></td>
                            <td><%double precio = cant*prod.getPrecio();%><%=precio%></td>
+                        </tr>
                         <%}%>
                         
                         
