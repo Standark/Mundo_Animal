@@ -81,7 +81,7 @@ public class Registro extends HttpServlet {
                         request.setAttribute("textoError", "No se han guardado correctamente los datos.");
                         this.url = "/error.jsp";
                     } else {
-                        this.url = "/miPerfil.jsp";
+                        this.url = "/loginORegistro.jsp";
                         /*
                         try (PrintWriter out = response.getWriter()) {
                              TODO output your page here. You may use following sample code. 
