@@ -101,7 +101,42 @@ public class ProductoDB {
             return resultado;
         }
     }
+    
+public static List<Producto> buscarProductoMasComentado(int id) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        List<Producto> resultado = new ArrayList<Producto>();
+        
+        String query = "SELECT IDPRODUCTO,COUNT(IDPRODUCTO)(*) FROM COMENTARIOS a GROUP BY IDPRODUCTO HAVING a.COUNT(*)>(SELECT b.COUNT(*) FROM COMENTARIO b)/2";
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet res = ps.executeQuery();
+            while (res.next()) {
+                Producto producto = new Producto(res.getInt("ID"),
+                        res.getString("NOMBRE"),
+                        res.getString("DESCRIPCION"),
+                        res.getDouble("PRECIO"),
+                        res.getString("IMAGEN"),
+                        res.getInt("VALORACION"),
+                        res.getString("ANIMAL"),
+                        res.getString("CATEGORIA"));
+                resultado.add(producto);
+            }
+            ps.close();
+            pool.freeConnection(connection);
+            return resultado;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return resultado;
+        }
 
+    
+    
+    
+    
+}
     public static List<Producto> buscarProducto(String animal, String categoria) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -171,7 +206,7 @@ public class ProductoDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         Producto producto = null;
-        String query = "SELECT * FROM PRODUCTOS WHERE ID = ?";
+        String query = "SELECT * FROM PRODUCTO WHERE ID= ?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -209,8 +244,8 @@ public class ProductoDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         String query
-                = "UPDATE PRODUCTOS SET NOMBRE = ? , DESCRIPCION = ? , PRECIO = ? , IMAGEN = ? "
-                + ", VALORACION = ? , ANIMAL = ? , CATEGORIA = ? WHERE ID=?";
+                = "UPDATE PRODUCTO SET NOMBRE = ? , DESCRIPCION = ? , PRECIO = ? , IMAGEN = ? "
+                + ", VALORACION = ? , ANIMAL = ? , CATEGORIA = ? WHERE id=?";
         try {
             ps = connection.prepareStatement(query);
             ps.setString(1, nombre);
