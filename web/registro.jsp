@@ -54,7 +54,7 @@
                                                     <input type="password" name="paswordRep" class="form-input"  placeholder="Repite contraseña" onblur="revisar(this)"/>
 
                                                     <label for="nacimiento">Fecha de nacimiento<span>(requerido)</span></label>
-                                                    <input type="text" name="nacimiento" class="form-input"  placeholder="01-01-2001" onblur="revisar(this); revisarFecha(this);"/>
+                                                    <input type="text" name="nacimiento" class="form-input"  placeholder="01/01/2001" onblur="revisar(this); revisarFecha(this);"/>
 
                                                     <label for="telefono">Teléfono: <span>(requerido)</span></label>
                                                     <input type="text" name="telefono" class="form-input" placeholder="983000000" onblur="revisar(this)"/>

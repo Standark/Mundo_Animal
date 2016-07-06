@@ -21,7 +21,7 @@ function revisarEmail(elemento) {
 function revisarFecha(elemento) {
     if (elemento.value != "") {
         var dato = elemento.value;
-        var expresion = /[0-3][0-9][\-][0-1][0-9][\-][0-2][0-9][0-9][0-9]/;
+        var expresion = /[0-3][0-9][/][0-1][0-9][/][0-2][0-9][0-9][0-9]/;
         if (!expresion.test(dato)) {
             elemento.className = 'error';
         } else {
@@ -56,9 +56,9 @@ function validar(form) {
         return false; //devolvemos un valor negativo
     } else {
         var dato = form.nacimiento.value;
-        var expresion = /[0-3][0-9][\-][0-1][0-9][\-][0-2][0-9][0-9][0-9]/;
+        var expresion = /[0-3][0-9][/][0-1][0-9][/][0-2][0-9][0-9][0-9]/;
         if (!expresion.test(dato)) {
-            alert('La fecha de nacimiento es erronea.\nEjemplo: dd-mm-aaaa');
+            alert('La fecha de nacimiento es erronea.\nEjemplo: dd/mm/aaaa');
             return false;
         }
     }

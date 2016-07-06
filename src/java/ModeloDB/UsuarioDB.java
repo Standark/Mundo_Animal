@@ -21,7 +21,7 @@ public class UsuarioDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         String query
-                = "INSERT INTO USUARIO (NOMBRE, APELLIDOS, NICK, PASSWORD,"
+                = "INSERT INTO USUARIO (NOMBRE, APELLIDO, NICK, PASSWORD,"
                 + " DIRECCION, CP, MAIL, CIUDAD, PROVINCIA, TELEFONO, FECHA_NAC)"
                 + " VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 

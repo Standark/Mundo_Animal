@@ -7,14 +7,11 @@ package Servlet;
 
 import Modelo.Usuario;
 import ModeloDB.UsuarioDB;
-import ModeloDB.UsuarioDB;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,17 +60,14 @@ public class Registro extends HttpServlet {
                 String ciudad = request.getParameter("ciudad");
                 String provincia = request.getParameter("provincia");
                 int telefono = Integer.parseInt(request.getParameter("telefono"));
-                String dateInString = request.getParameter("nacimiento");
+                String noFecha = request.getParameter("nacimiento");
 
-                System.out.println("Antes del parseo de la fecha");
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-                Date fechaNac = null;
-                try {
-                    fechaNac = (Date) formatter.parse(dateInString);
-                } catch (ParseException e) {
-                    System.out.println("Fecha incorrecta.");
-                }
-                System.out.println("Despues del parseo de la fecha");
+                SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+                System.out.println(noFecha);
+                java.util.Date parsed = formato.parse(noFecha);
+                System.out.println(parsed);
+                java.sql.Date fecha = new java.sql.Date(parsed.getTime());
+                System.out.println(fecha);
 
                 //Password repetida no se recupera por que ya se ha comprobado con javascript en la pagina
                 //jsp que el usuario ha introducido la misma contraseña dos veces y no tiene sentido recuperarla 
@@ -89,7 +83,7 @@ public class Registro extends HttpServlet {
 
                 //Guardamos los datos en la BD, al insertar la función puede devolver dos valores, 0 si no ha
                 //conseguido insertarlo y 1 en caso contrario
-                Usuario nuevoUsuario = new Usuario(nombre, apellidos, nick, password, direccion, cp, mail, ciudad, provincia, telefono, fechaNac);
+                Usuario nuevoUsuario = new Usuario(nombre, apellidos, nick, password, direccion, cp, mail, ciudad, provincia, telefono, fecha);
                 if (UsuarioDB.insertar(nuevoUsuario) == 0) {
                     request.setAttribute("textoError", "No se han guardado correctamente los datos.");
                     this.url = "/error.jsp";
