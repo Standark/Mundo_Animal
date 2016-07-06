@@ -214,7 +214,7 @@ public class UsuarioDB {
         }
         
     }
-    public static int modificarProducto(int id,
+    public static int modificarUsuario(int id,
             String nombre,
             String apellido,
             String password,
