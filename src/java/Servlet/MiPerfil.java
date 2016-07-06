@@ -43,16 +43,7 @@ public class MiPerfil extends HttpServlet {
             else{
                 int id =(int) session.getAttribute("id");
                 Usuario usuario = UsuarioDB.getUsuarioPorID(id);
-                String nombre = usuario.getNombre();
-                String apellido = usuario.getApellidos();
-                String nick = usuario.getNick();
-                String direccion = usuario.getDireccion();
-                int cp = usuario.getCP();
-                String mail = usuario.getMail();
-                String ciudad = usuario.getCiudad();
-                String provincia = usuario.getProvincia();
-                int telefono = usuario.getTelefono();
-                Date fechaNac = usuario.getFechaNac();
+                request.setAttribute("usur",usuario);
             }
         }catch(Exception e){
             System.out.println(e);

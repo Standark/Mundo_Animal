@@ -4,6 +4,7 @@
     Author     : Dawn_
 --%>
 
+<%@page import="Modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,10 +21,21 @@
 	<%@include file="header.jsp" %>
 	<%@include file="menu.jsp" %>
         <div id="page">
+            <% Usuario usuario = (Usuario) request.getAttribute("usur");%>
             <table>
                 <tr>
                 <td><%@include file="menuPerfil.jsp" %></td>
-                <td><p>Nombre:</p></td></tr>
+                <td><p>Nombre:<%=usuario.getNombre()%></p></td>
+                <td><p>Nombre:<%=usuario.getApellidos()%></p></td>
+                <td><p>Nombre:<%=usuario.getNick()%></p></td>
+                <td><p>Nombre:<%=usuario.getDireccion()%></p></td>
+                <td><p>Nombre:<%=usuario.getCP()%></p></td>
+                <td><p>Nombre:<%=usuario.getMail()%></p></td>
+                <td><p>Nombre:<%=usuario.getCiudad()%></p></td>
+                <td><p>Nombre:<%=usuario.getProvincia()%></p></td>
+                <td><p>Nombre:<%=usuario.getTelefono()%></p></td>
+                <td><p>Nombre:<%=usuario.getFechaNac()%></p></td>
+                </tr>
             </table>
         </div>
 	<!-- end #page -->
