@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,7 +40,7 @@ public class Cesta extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         
-        if (action=="mostrar"){
+        if (action.equals("mostrar")){
             mostrarCarrito(request,response);
         }
         else{
@@ -54,7 +55,7 @@ public class Cesta extends HttpServlet {
     private void mostrarCarrito(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = "/cesta.jsp";
-            request.setAttribute("listProd", prods); 
+            
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
     }
@@ -62,13 +63,22 @@ public class Cesta extends HttpServlet {
     private void addProduct(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        HttpSession sesion = request.getSession();
+        
+        if(sesion.getAttribute("prods")== null){
+            Map<Producto, Integer> prods = new HashMap<>(); 
+        }else{
+            Map<Producto, Integer> prods = (HashMap<Producto, Integer>) sesion.getAttribute("prods");
+        }
         Producto prod = ProductoDB.getProductoPorId(Integer.parseInt(request.getParameter("producto")));
+        
         if(prods.containsKey(prod)){
             prods.put(prod, prods.get(prod)+1);
         }
         else{
             prods.put(prod,1);
         }
+        sesion.setAttribute("prods", prods);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

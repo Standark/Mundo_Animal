@@ -4,6 +4,11 @@
     Author     : Dawn_
 --%>
 
+<%@page import="java.util.Map.Entry"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="Modelo.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -50,10 +55,31 @@
                     
                 </td>
                 </tr>
+                <tr>
+                        <%HttpSession sesion = request.getSession();
+                        Map<Producto, Integer> prods = (HashMap<Producto,Integer>) sesion.getAttribute("prods");
+                        Iterator <Entry<Producto,Integer>> it = prods.entrySet().iterator();
+                        Entry<Producto,Integer> entry = null;
+                        Producto prod = null;
+                        Integer cant = null;
+                        while(it.hasNext()){
+                            entry =it.next();
+                            prod= entry.getKey();
+                            cant = entry.getValue();
+                           %>
+                           <td><%=prod.getNombre()%></td>
+                           <td><%=prod.getPrecio()%></td>
+                           <td><%=cant%></td>
+                           <td><%double precio = cant*prod.getPrecio();%><%=precio%></td>
+                        <%}%>
+                        
+                        
+                   
+                </tr> 
                 <td colspan="4" >
                 	<br>
                     <br>
-                    <%
+                    
                 
                 	<hr size="2px" width="90%" noshade="noshade" align="center" />
                 </td>

@@ -63,17 +63,17 @@ public class Registro extends HttpServlet {
                 String ciudad = request.getParameter("ciudad");
                 String provincia = request.getParameter("provincia");
                 int telefono = Integer.parseInt(request.getParameter("telefono"));
-
                 String dateInString = request.getParameter("nacimiento");
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
-                Date fechaNac = null;
 
-               
+                System.out.println("Antes del parseo de la fecha");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                Date fechaNac = null;
                 try {
                     fechaNac = (Date) formatter.parse(dateInString);
                 } catch (ParseException e) {
-                    e.printStackTrace();
+                    System.out.println("Fecha incorrecta.");
                 }
+                System.out.println("Despues del parseo de la fecha");
 
                 //Password repetida no se recupera por que ya se ha comprobado con javascript en la pagina
                 //jsp que el usuario ha introducido la misma contraseña dos veces y no tiene sentido recuperarla 
@@ -83,7 +83,7 @@ public class Registro extends HttpServlet {
                     request.setAttribute("textoError", "Ya hay un usuario registrado con ese nick.");
                     this.url = "/error.jsp";
                     System.out.println("Ya hay usuario con ese nick.");
-                } else{
+                } else {
                     System.out.println("No hay usuario con ese nick.");
                 }
 
