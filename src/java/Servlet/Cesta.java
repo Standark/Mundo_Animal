@@ -70,6 +70,8 @@ public class Cesta extends HttpServlet {
         }else{
             Map<Producto, Integer> prods = (HashMap<Producto, Integer>) sesion.getAttribute("prods");
         }
+        System.out.println("HOLLLAAAA");
+        System.out.println(request.getParameter("producto"));
         Producto prod = ProductoDB.getProductoPorId(Integer.parseInt(request.getParameter("producto")));
         
         if(prods.containsKey(prod)){
