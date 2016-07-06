@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
  */
 public class Cesta extends HttpServlet {
 
-    private Map<Producto, Integer> prods = new HashMap<Producto, Integer>();
+    //private Map<Producto, Integer> prods = new HashMap<Producto, Integer>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -62,17 +62,20 @@ public class Cesta extends HttpServlet {
 
     private void addProduct(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String url = "/catalogo.jsp";
         
         HttpSession sesion = request.getSession();
-        String url = "/catalogo.jsp";
+        Map<Producto, Integer> prods;
+        Producto prod = ProductoDB.getProductoPorId(Integer.parseInt(request.getParameter("producto")));
+        
         if(sesion.getAttribute("prods")== null){
-            Map<Producto, Integer> prods = new HashMap<>(); 
+            prods = new HashMap<>(); 
         }else{
-            Map<Producto, Integer> prods = (HashMap<Producto, Integer>) sesion.getAttribute("prods");
+            prods = (HashMap<Producto, Integer>) sesion.getAttribute("prods");
         }
         System.out.println("HOLLLAAAA");
         System.out.println(request.getParameter("producto"));
-        Producto prod = ProductoDB.getProductoPorId(Integer.parseInt(request.getParameter("producto")));
+        
         
         if(prods.containsKey(prod)){
             prods.put(prod, prods.get(prod)+1);
@@ -81,6 +84,7 @@ public class Cesta extends HttpServlet {
             prods.put(prod,1);
         }
         sesion.setAttribute("prods", prods);
+        //response.sendRedirect("catalogo.jsp");
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

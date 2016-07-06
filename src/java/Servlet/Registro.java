@@ -63,11 +63,8 @@ public class Registro extends HttpServlet {
                 String noFecha = request.getParameter("nacimiento");
 
                 SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-                System.out.println(noFecha);
                 java.util.Date parsed = formato.parse(noFecha);
-                System.out.println(parsed);
                 java.sql.Date fecha = new java.sql.Date(parsed.getTime());
-                System.out.println(fecha);
 
                 //Password repetida no se recupera por que ya se ha comprobado con javascript en la pagina
                 //jsp que el usuario ha introducido la misma contraseña dos veces y no tiene sentido recuperarla 
@@ -76,32 +73,30 @@ public class Registro extends HttpServlet {
                 if (UsuarioDB.isUsuarioRegistrado(nick)) {
                     request.setAttribute("textoError", "Ya hay un usuario registrado con ese nick.");
                     this.url = "/error.jsp";
-                    System.out.println("Ya hay usuario con ese nick.");
                 } else {
-                    System.out.println("No hay usuario con ese nick.");
-                }
+                    //Guardamos los datos en la BD, al insertar la función puede devolver dos valores, 0 si no ha
+                    //conseguido insertarlo y 1 en caso contrario
+                    Usuario nuevoUsuario = new Usuario(nombre, apellidos, nick, password, direccion, cp, mail, ciudad, provincia, telefono, fecha);
+                    if (UsuarioDB.insertar(nuevoUsuario) == 0) {
+                        request.setAttribute("textoError", "No se han guardado correctamente los datos.");
+                        this.url = "/error.jsp";
+                    } else {
+                        this.url = "/loginORegistro.jsp";
+                        /*
+                        try (PrintWriter out = response.getWriter()) {
+                             TODO output your page here. You may use following sample code. 
+                            out.println("<!DOCTYPE html>");
+                            out.println("<html>");
+                            out.println("<head>");
+                            out.println("<title>Registro realizado</title>");
+                            out.println("</head>");
+                            out.println("<body>");
+                            out.println("<h1>Te has registrado correctamente " + request.getContextPath() + "</h1>");
+                            out.println("</body>");
+                            out.println("</html>");
+                        }*/
 
-                //Guardamos los datos en la BD, al insertar la función puede devolver dos valores, 0 si no ha
-                //conseguido insertarlo y 1 en caso contrario
-                Usuario nuevoUsuario = new Usuario(nombre, apellidos, nick, password, direccion, cp, mail, ciudad, provincia, telefono, fecha);
-                if (UsuarioDB.insertar(nuevoUsuario) == 0) {
-                    request.setAttribute("textoError", "No se han guardado correctamente los datos.");
-                    this.url = "/error.jsp";
-                } else {
-
-                    try (PrintWriter out = response.getWriter()) {
-                        /* TODO output your page here. You may use following sample code. */
-                        out.println("<!DOCTYPE html>");
-                        out.println("<html>");
-                        out.println("<head>");
-                        out.println("<title>Registro realizado</title>");
-                        out.println("</head>");
-                        out.println("<body>");
-                        out.println("<h1>Te has registrado correctamente " + request.getContextPath() + "</h1>");
-                        out.println("</body>");
-                        out.println("</html>");
                     }
-
                 }
                 // Si el usuario que llega a este servlet esta registrado, no tiene sentido que lo vuelva a hacer, por eso
                 // redirigimos a su peril
