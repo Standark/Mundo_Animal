@@ -50,7 +50,10 @@
                                                     <td><b><%=listProd.get(i).getDescripcion()%></b></td>
                                                     <td>Precio unidad: <b><%=listProd.get(i).getPrecio()%></b></td>
                                                     <td><b><img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b></td>
-                                                    <td><b><form  action="Cesta" method="post">
+                                                    <td><b>
+                                                            
+                                                            <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>--%>
+                                                            <form  action="Cesta" method="post">
                                                                 
                                                                 <input type="hidden" name= "producto" value="<%=String.valueOf(listProd.get(i).getId())%>">
                                                                 <input type="hidden" name="action" value="add">

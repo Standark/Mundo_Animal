@@ -64,7 +64,7 @@ public class Cesta extends HttpServlet {
             throws ServletException, IOException {
         
         HttpSession sesion = request.getSession();
-        
+        String url = "/catalogo.jsp";
         if(sesion.getAttribute("prods")== null){
             Map<Producto, Integer> prods = new HashMap<>(); 
         }else{
@@ -81,6 +81,8 @@ public class Cesta extends HttpServlet {
             prods.put(prod,1);
         }
         sesion.setAttribute("prods", prods);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
