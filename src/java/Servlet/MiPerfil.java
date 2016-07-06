@@ -11,7 +11,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import Modelo.Usuario;
+import ModeloDB.UsuarioDB;
+import java.sql.Date;
 /**
  *
  * @author Roberto
@@ -27,20 +31,31 @@ public class MiPerfil extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private String url;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MiPerfil</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MiPerfil at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try {
+            HttpSession session = request.getSession();
+            if(session.getAttribute("id")==null){
+                request.setAttribute("textoError", "La sesion no ha sido iniciada");
+                this.url = "/error.jsp";
+            }
+            else{
+                int id =(int) session.getAttribute("id");
+                Usuario usuario = UsuarioDB.getUsuarioPorID(id);
+                String nombre = usuario.getNombre();
+                String apellido = usuario.getApellidos();
+                String nick = usuario.getNick();
+                String direccion = usuario.getDireccion();
+                int cp = usuario.getCP();
+                String mail = usuario.getMail();
+                String ciudad = usuario.getCiudad();
+                String provincia = usuario.getProvincia();
+                int telefono = usuario.getTelefono();
+                Date fechaNac = usuario.getFechaNac();
+            }
+        }catch(Exception e){
+            System.out.println(e);
         }
     }
 

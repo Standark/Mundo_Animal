@@ -149,6 +149,42 @@ public class UsuarioDB {
         }
     }
     
+    public static Usuario getUsuarioPorID(int id) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        Usuario usuario = null;
+        String query = "SELECT * FROM USUARIO WHERE ID = ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                usuario = new Usuario(rs.getInt("ID"),
+                        rs.getString("NOMBRE"),
+                        rs.getString("APELLIDOS"),
+                        rs.getString("NICK"),
+                        rs.getString("PASSWORD"),
+                        rs.getString("DIRECCION"),
+                        rs.getInt("CP"),
+                        rs.getString("MAIL"),
+                        rs.getString("CIUDAD"),
+                        rs.getString("PROVINCIA"),
+                        rs.getInt("TELEFONO"),
+                        rs.getDate("FECHA_NAC"));
+            }
+            
+            ps.close();
+            pool.freeConnection(connection);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
+        return usuario;
+    }
+    
     
     
 /*Comprueba que la contraseña es correcta*/
