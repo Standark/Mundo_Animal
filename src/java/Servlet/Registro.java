@@ -81,9 +81,10 @@ public class Registro extends HttpServlet {
                         request.setAttribute("textoError", "No se han guardado correctamente los datos.");
                         this.url = "/error.jsp";
                     } else {
-
+                        this.url = "/miPerfil.jsp";
+                        /*
                         try (PrintWriter out = response.getWriter()) {
-                            /* TODO output your page here. You may use following sample code. */
+                             TODO output your page here. You may use following sample code. 
                             out.println("<!DOCTYPE html>");
                             out.println("<html>");
                             out.println("<head>");
@@ -93,7 +94,7 @@ public class Registro extends HttpServlet {
                             out.println("<h1>Te has registrado correctamente " + request.getContextPath() + "</h1>");
                             out.println("</body>");
                             out.println("</html>");
-                        }
+                        }*/
 
                     }
                 }
