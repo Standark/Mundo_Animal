@@ -63,7 +63,7 @@ public class UsuarioDB {
             if (rs.next()) {
                 usuario = new Usuario(rs.getInt("ID"),
                         rs.getString("NOMBRE"),
-                        rs.getString("APELLIDOS"),
+                        rs.getString("APELLIDO"),
                         rs.getString("NICK"),
                         rs.getString("PASSWORD"),
                         rs.getString("DIRECCION"),
@@ -117,7 +117,7 @@ public class UsuarioDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         List<Usuario> resultado = new ArrayList<Usuario>();
-        String query = "SELECT DISTINCT a.* FROM USUARIO a WHERE ((a.NOMBRE = ?) OR (a.APELLIDOS = ?) OR (a.NICK = ?))";
+        String query = "SELECT DISTINCT a.* FROM USUARIO a WHERE ((a.NOMBRE = ?) OR (a.APELLIDO = ?) OR (a.NICK = ?))";
 
         try {
             ps = connection.prepareStatement(query);
@@ -128,7 +128,7 @@ public class UsuarioDB {
             while(res.next()){
                 Usuario usuario = new Usuario(res.getInt("ID"),
                         res.getString("NOMBRE"),
-                        res.getString("APELLIDOS"),
+                        res.getString("APELLIDO"),
                         res.getString("NICK"),
                         res.getString("PASSWORD"),
                         res.getString("DIRECCION"),
@@ -163,7 +163,7 @@ public class UsuarioDB {
             if (rs.next()) {
                 usuario = new Usuario(rs.getInt("ID"),
                         rs.getString("NOMBRE"),
-                        rs.getString("APELLIDOS"),
+                        rs.getString("APELLIDO"),
                         rs.getString("NICK"),
                         rs.getString("PASSWORD"),
                         rs.getString("DIRECCION"),
