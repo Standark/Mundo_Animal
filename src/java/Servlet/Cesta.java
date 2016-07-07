@@ -65,9 +65,15 @@ public class Cesta extends HttpServlet {
     private void addProduct(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String url= "ObtenerProductos?animal="+request.getParameter("animal");
-        if(request.getAttribute("categoria")!= null){
-            url = url+"&categoria="+request.getParameter("categoria");
+        String categoria = request.getParameter("categoria");
+        String animal = request.getParameter("animal");
+        String url;
+        String url1= "ObtenerProductos?animal="+ animal;
+        
+        if(!categoria.equals("null")){
+            url = url1+"&categoria="+categoria;
+        }else{
+            url = url1;
         }
         System.out.println(url);
         

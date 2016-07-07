@@ -57,6 +57,13 @@
                 </tr>
                 <tr>
                         <%HttpSession sesion = request.getSession();
+                        if(sesion.getAttribute("prods")==null){%>
+                        <tr>
+                            <td> CARRITO VACIO</td>  
+                        </tr>
+                        <%}%>
+                        <%else{%>
+                        <%
                         Map<Producto, Integer> prods = (HashMap<Producto,Integer>) sesion.getAttribute("prods");
                         Iterator <Entry<Producto,Integer>> it = prods.entrySet().iterator();
                         Entry<Producto,Integer> entry = null;
@@ -66,13 +73,14 @@
                             entry =it.next();
                             prod= entry.getKey();
                             cant = entry.getValue();
-                           %>
+                        %>
                         <tr>
                            <td><%=prod.getNombre()%></td>
                            <td><%=prod.getPrecio()%></td>
                            <td><%=cant%></td>
                            <td><%double precio = cant*prod.getPrecio();%><%=precio%></td>
                         </tr>
+                        <%}%>
                         <%}%>
                         
                         

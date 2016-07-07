@@ -38,12 +38,12 @@ public class ObtenerProductos extends HttpServlet {
         String url = "/catalogo.jsp";
         if (animal != null) {
             ArrayList<Producto> listProductosCat;
-            if (categoria != null) {
-                listProductosCat = new ArrayList<Producto>(ProductoDB.buscarProducto(animal, categoria));//
+            if (categoria == null) {
+                listProductosCat = new ArrayList<Producto>(ProductoDB.buscarProducto(animal));//
                 request.setAttribute("listProd", listProductosCat);
                 request.setAttribute("animal", animal);
             } else {
-                listProductosCat = new ArrayList<Producto>(ProductoDB.buscarProducto(animal));//
+                listProductosCat = new ArrayList<Producto>(ProductoDB.buscarProducto(animal, categoria));//
                 request.setAttribute("listProd", listProductosCat);
                 request.setAttribute("animal", animal);
                 request.setAttribute("categoria", categoria);
