@@ -82,6 +82,7 @@ public class Registro extends HttpServlet {
                         this.url = "/error.jsp";
                     } else {
                         this.url = "/miPerfil.jsp";
+                        request.setAttribute("usuario", nuevoUsuario);
                         HttpSession session = request.getSession();
                         session.setAttribute("usuario", nuevoUsuario);
 
