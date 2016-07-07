@@ -109,14 +109,15 @@ public static List<Producto> buscarProductoUltimoComentado() {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         List<Producto> resultado = new ArrayList<Producto>();
+        List<Producto> aux = new ArrayList<Producto>();
         int i = 0;
         String query = "SELECT ID_PRODUCTO, FECHA FROM COMENTARIO ORDER BY FECHA";
         try {
             ps = connection.prepareStatement(query);
             ResultSet res = ps.executeQuery();
-            while (res.next() || i == 10) {
+            while (res.next()) {
                 int idProducto = res.getInt("ID_PRODUCTO");
-                resultado.add(ProductoDB.getProductoPorId(idProducto));
+                aux.add(ProductoDB.getProductoPorId(idProducto));
                 i++;
             }
                 /*Producto producto = new Producto(res.getInt("ID"),
@@ -131,7 +132,11 @@ public static List<Producto> buscarProductoUltimoComentado() {
             }*/
             ps.close();
             pool.freeConnection(connection);
-            Collections.reverse(resultado);
+            Collections.reverse(aux);
+            while(!aux.isEmpty() && i < 10){
+                resultado.add(aux.get(0));
+                aux.remove(0);
+            }
             return resultado;
         } catch (SQLException e) {
             e.printStackTrace();
