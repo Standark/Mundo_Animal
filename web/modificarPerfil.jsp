@@ -21,7 +21,7 @@
             <%@include file="header.jsp" %>
             <%@include file="menu.jsp" %>
             <div id="page">
-                <% Usuario usuario = (Usuario) request.getAttribute("usuario");%>
+                <% Usuario usuario = (Usuario) sesion.getAttribute("usuario");%>
                 <div class="column">
                     <label for="nombre">Nombre <span>(requerido)</span></label>
                     <input type="text" name="nombre" class="form-input"  placeholder="Nombre" onblur="revisar(this);"/>

@@ -40,10 +40,9 @@
                             <li><a href="index.jsp">Principal</a></li>
                             <li><a href="miPerfil.jsp">Mi perfil</a></li>
                             <li><a href="modificarPerfil.jsp">Editar perfil</a></li>
-                            <li><a href="#">Cerrar Sesión</a></li>
-                                <%
-                                    }
-                                %>
+                            <li><a href="index.jsp"<%
+                                    sesion.invalidate();}
+                                %>>Cerrar Sesión</a></li>
                         </ul>
                     </li>
                 </ul>
