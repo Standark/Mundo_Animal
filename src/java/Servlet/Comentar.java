@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,13 +37,19 @@ public class Comentar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            String titulo = (String)request.getAttribute("titulo");
-            String comentario = (String)request.getAttribute("comentario");
-            int puntuacion = (int)request.getAttribute("puntuacion");
-            int idCliente = (int)request.getAttribute("idCliente");
-            Date fecha = new Date(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
-            int idProducto = (int)request.getAttribute("idProducto");
-            ComentarioDB.insertar(new Comentario(1, idCliente, idProducto, puntuacion, titulo, fecha, comentario));
+            HttpSession session = request.getSession();
+            if (session.getAttribute("id") == null) {
+                request.setAttribute("textoError", "La sesion no ha sido iniciada");
+                url = "/error.jsp";
+            } else {
+                String titulo = (String) request.getAttribute("titulo");
+                String comentario = (String) request.getAttribute("comentario");
+                int puntuacion = (int) request.getAttribute("puntuacion");
+                int idCliente = (int) request.getAttribute("idCliente");
+                Date fecha = new Date(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
+                int idProducto = (int) request.getAttribute("idProducto");
+                ComentarioDB.insertar(new Comentario(1, idCliente, idProducto, puntuacion, titulo, fecha, comentario));
+            }
         }catch(Exception e){System.out.println(e);}
         
     }
