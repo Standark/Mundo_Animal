@@ -34,7 +34,7 @@ public class Comentar extends HttpServlet {
     String url = null;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        response.setContentType("text/html;charset=UTF-8");
         try {
             String titulo = (String)request.getAttribute("titulo");
             String comentario = (String)request.getAttribute("comentario");
@@ -42,8 +42,9 @@ public class Comentar extends HttpServlet {
             int idCliente = (int)request.getAttribute("idCliente");
             Date fecha = new Date(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
             int idProducto = (int)request.getAttribute("idProducto");
-            ComentarioDB.insertar(Comentario(idCliente,idProducto,puntuacion,titulo,fecha,comentario));
+            ComentarioDB.insertar(new Comentario(1, idCliente, idProducto, puntuacion, titulo, fecha, comentario));
         }catch(Exception e){System.out.println(e);}
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -84,9 +85,5 @@ public class Comentar extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private Comentario Comentario(int idCliente, int idProducto, int puntuacion, String titulo, Date fecha, String comentario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

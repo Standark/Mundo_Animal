@@ -23,7 +23,7 @@ public class ComentarioDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         String query
-                = "INSERT INTO COENTARIO (ID, ID_CLIENTE, ID_PRODUCTO, PUNTUACION, TITULO, FECHA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?)";
+                = "INSERT INTO COMENTARIO (ID_CLIENTE, ID_PRODUCTO, PUNTUACION, TITULO, FECHA, COMENTARIO) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             ps = connection.prepareStatement(query);

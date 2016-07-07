@@ -20,6 +20,10 @@
         <servlet-name>MiPerfil</servlet-name>
         <servlet-class>Servlet.MiPerfil</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Comentar</servlet-name>
+        <servlet-class>Servlet.Comentar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ObtenerProductos</servlet-name>
         <url-pattern>/ObtenerProductos</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>MiPerfil</servlet-name>
         <url-pattern>/MiPerfil</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Comentar</servlet-name>
+        <url-pattern>/Comentar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
