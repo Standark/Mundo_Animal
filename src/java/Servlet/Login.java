@@ -48,18 +48,15 @@ public class Login extends HttpServlet {
                 //En primer lugar comprobamos si el usuario registrado existe en la base de datos
                 if (!UsuarioDB.isUsuarioRegistrado(nombreUsuario)) {
                     //Si el usuario no existe en la base de datos , redireccioamos a la pagina de error
-                    System.out.println("Usuario No Registrado");
-
                     request.setAttribute("textoError", "No existe el usuario en la base de datos");
                     this.url = "/error.jsp";
                 } else if (!UsuarioDB.isClaveCorrecta(nombreUsuario, clave)) {
                     //Si el usuario no ha introducido de forma correcta su clave , redireccionamos a la pagina de error
-                    System.out.println("Clave incorrecta");
                     request.setAttribute("textoError", "La clave introducida no es correcta, por favor vuelva a introducirla");
                     this.url = "/error.jsp";
                 } else {
                     //Una vez se ha comprobado que el usuario existe y que ha introducido su contraseña de forma correcta se inicia la sesión
-                    sesion.setAttribute("nombreUsuario", nombreUsuario);
+                    sesion.setAttribute("usuario", UsuarioDB.getUsuarioPorNick(nombreUsuario));
                     this.url = "/index.jsp";
                 }
                 // Si el usuario introduce la direccion de este servlet de forma manual en la barra de direcciones 

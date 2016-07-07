@@ -45,6 +45,7 @@ public class Registro extends HttpServlet {
         try {
             //Obtenemos la sesión actual
             HttpSession sesion = request.getSession();
+            System.out.println(sesion.getAttributeNames());
             // En este caso de uso, el usuario NO tiene que haber iniciado sesion
             // por eso comprobamos que quien llegue a este servlet no este metido en sesion
             if (request.getParameter("nombre") != null) {
@@ -69,7 +70,6 @@ public class Registro extends HttpServlet {
                 //Password repetida no se recupera por que ya se ha comprobado con javascript en la pagina
                 //jsp que el usuario ha introducido la misma contraseña dos veces y no tiene sentido recuperarla 
                 //en este servlet
-                System.out.println("Comprobamos el nick...");
                 if (UsuarioDB.isUsuarioRegistrado(nick)) {
                     request.setAttribute("textoError", "Ya hay un usuario registrado con ese nick.");
                     this.url = "/error.jsp";

@@ -51,18 +51,9 @@
     <body>
         <div id="wrapper">
 
-            <%
-                HttpSession sesion = request.getSession();
-                if ( sesion.getAttribute("id")== null) {
-            %>
+
             <%@include file="header.jsp" %>
-            <%
-            } else {
-            %>
-            <%@include file="header_logueado.jsp" %>
-            <%
-                }
-            %>
+
             <%@include file="menu.jsp" %>
 
             <!-- fin del  #menu -->
