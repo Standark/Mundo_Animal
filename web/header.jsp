@@ -26,9 +26,9 @@
                    <a href="#" class="perfil"></a>
                     <ul>
                         
-                        <li><a href="perfil.html">Perfil</a></li>
-                        <li><a href="perfil.html">Mi perfil</a></li>
-                        <li><a href="editarperfil.html">Editar perfil</a></li>
+                        <li><a href="index.jsp">Principal</a></li>
+                        <li><a href="loginORegistro.jsp">Inicar sesión</a></li>
+                        <li><a href="registro.jsp">Registrarse</a></li>
                         <li><a href="#">Cerrar Sesión</a></li>
 
                     </ul>

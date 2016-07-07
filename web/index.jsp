@@ -51,7 +51,18 @@
     <body>
         <div id="wrapper">
 
-            <%@include file="header.jsp" %>
+            <%
+                HttpSession sesion = request.getSession();
+                if ( sesion.getAttribute("id")== null) {
+            %>
+            <jsp:include page="<%="header.jsp"%>"/>
+            <%
+            } else {
+            %>
+            <jsp:include page="<%="header_logueado.jsp"%>"/>
+            <%
+                }
+            %>
             <%@include file="menu.jsp" %>
 
             <!-- fin del  #menu -->
@@ -100,52 +111,52 @@
                                                     <td><b><img src="<%=producto.get(i).getImagen()%>" width="250" height="250"></b></td>
                                                     <td><b>
                                                             
-                                                            <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>%>
-                                                            <form  action="Cesta" method="post">
-                                                                
-                                                                <input type="hidden" name= "producto" value="<%=String.valueOf(producto.get(i).getId())%>">
-                                                                <input type="hidden" name="animal" value="<%=String.valueOf(producto.get(i).getAnimal())%>">
-                                                                <input type="hidden" name ="categoria"value="<%=String.valueOf(producto.get(i).getCategoria())%>">
-                                                                <input type="hidden" name="action" value="add">
-                                                                <button class ="btn" type="submit" value="añadir" name="btnAñadir">Añadir al carrito</button>
-                                                            </form></b></li>
-                                                    </td>
-                                                        <%}%>
-                                                </tr>
-                                            </ul>
-                                            <%} else {%>
-                                            <p class="textosCentrados">No hay productos disponibles de esta categoría.</p>
-                                            <%}--%>
+                                            <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>%>
+                                            <form  action="Cesta" method="post">
+                                                
+                                                <input type="hidden" name= "producto" value="<%=String.valueOf(producto.get(i).getId())%>">
+                                                <input type="hidden" name="animal" value="<%=String.valueOf(producto.get(i).getAnimal())%>">
+                                                <input type="hidden" name ="categoria"value="<%=String.valueOf(producto.get(i).getCategoria())%>">
+                                                <input type="hidden" name="action" value="add">
+                                                <button class ="btn" type="submit" value="añadir" name="btnAñadir">Añadir al carrito</button>
+                                            </form></b></li>
+                                    </td>
+                                        <%}%>
+                                </tr>
+                            </ul>
+                            <%} else {%>
+                            <p class="textosCentrados">No hay productos disponibles de esta categoría.</p>
+                            <%}--%>
 
-                                           
-                                          
+
+
 
                                         </table>
-                                        </table>
-
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td valign="top">
-                                    <img src="images/paypal.png" width="155" height="85" alt=""/>
-
-                                </td>
-
-                            </tr>
-
                         </table>
-                        <!-- end #sidebar -->
-                        <div style="clear: both;">&nbsp;</div>
+
                     </div>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <img src="images/paypal.png" width="155" height="85" alt=""/>
+
+                        </td>
+
+                    </tr>
+
+                    </table>
+                    <!-- end #sidebar -->
+                    <div style="clear: both;">&nbsp;</div>
                 </div>
             </div>
-            <!-- end #page -->
         </div>
+        <!-- end #page -->
+    </div>
 
 
-        <%@include file="footer.jsp" %>
+    <%@include file="footer.jsp" %>
 
-    </body>
+</body>
 </head>
 </html>
