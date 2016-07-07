@@ -104,12 +104,12 @@ public class ProductoDB {
         }
     }
     
-public static List<Producto> buscarProductoUltimoComentado() {
+public static ArrayList<Producto> buscarProductoUltimoComentado() {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
-        List<Producto> resultado = new ArrayList<Producto>();
-        List<Producto> aux = new ArrayList<Producto>();
+        ArrayList<Producto> resultado = new ArrayList<Producto>();
+        ArrayList<Producto> aux = new ArrayList<Producto>();
         int i = 0;
         String query = "SELECT ID_PRODUCTO, FECHA FROM COMENTARIO ORDER BY FECHA";
         try {
