@@ -55,11 +55,11 @@
                 HttpSession sesion = request.getSession();
                 if ( sesion.getAttribute("id")== null) {
             %>
-            <%@include file="<%="header.jsp"%>"%>
+            <%@include file="header.jsp" %>
             <%
             } else {
             %>
-            <%@include file="<%="header_logueado.jsp"%>"%>
+            <%@include file="header_logueado.jsp" %>
             <%
                 }
             %>
