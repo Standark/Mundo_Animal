@@ -9,6 +9,10 @@
         <servlet-class>Servlet.Login</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>RealizarPedido</servlet-name>
+        <servlet-class>Servlet.RealizarPedido</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>Registro</servlet-name>
         <servlet-class>Servlet.Registro</servlet-class>
     </servlet>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RealizarPedido</servlet-name>
+        <url-pattern>/RealizarPedido</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Registro</servlet-name>

@@ -57,30 +57,36 @@
                 </tr>
                 <tr>
                         <%HttpSession sesion = request.getSession();
-                        if(sesion.getAttribute("prods")==null){%>
+                        Double total = 0.00;%>
+                        <%if(sesion.getAttribute("prods")==null){%>
                         <tr>
-                            <td> CARRITO VACIO</td>  
+                            <td colspan="4"><p class="subtitulos"> CARRITO VACIO</p></td>  
                         </tr>
-                        <%}%>
-                        <%else{%>
+                        <%}else{%>
                         <%
                         Map<Producto, Integer> prods = (HashMap<Producto,Integer>) sesion.getAttribute("prods");
                         Iterator <Entry<Producto,Integer>> it = prods.entrySet().iterator();
                         Entry<Producto,Integer> entry = null;
                         Producto prod = null;
                         Integer cant = null;
+                        
                         while(it.hasNext()){
                             entry =it.next();
                             prod= entry.getKey();
                             cant = entry.getValue();
+                            total = total + prod.getPrecio() * cant;
                         %>
                         <tr>
-                           <td><%=prod.getNombre()%></td>
-                           <td><%=prod.getPrecio()%></td>
-                           <td><%=cant%></td>
-                           <td><%double precio = cant*prod.getPrecio();%><%=precio%></td>
+                           <td align="center"><%=prod.getNombre()%></td>
+                           <td align="center"><%=prod.getPrecio()%></td>
+                           <td align="center"><%=cant%></td>
+                           <td align="center"><%double precio = cant*prod.getPrecio();%><%=precio%></td>
                         </tr>
                         <%}%>
+                        <tr>
+                            <td align="center">Total:</td>
+                            <td align="center"><%=total%></td>
+                        </tr>
                         <%}%>
                         
                         
@@ -106,11 +112,14 @@
                     
                     </td>
                     <td>
+             
                     <button class="boton-seguir" type="submit" >Seguir comprando</button>
                     
                     </td>
                     <td>
-                    <button class="boton-comprar" type="submit" >Realizar pedido</button>
+                    <form  action="RealizarPedido" method="post">                        
+                        <button class ="boton-comprar" type="submit" value="comprar" name="btnAñadir">Realizar Pedido</button>
+                        </form>
                     
                     </td>
     
