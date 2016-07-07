@@ -83,19 +83,8 @@ public class Registro extends HttpServlet {
                     } else {
                         this.url = "/miPerfil.jsp";
                         request.setAttribute("usuario", nuevoUsuario);
-                        /*
-                        try (PrintWriter out = response.getWriter()) {
-                             TODO output your page here. You may use following sample code. 
-                            out.println("<!DOCTYPE html>");
-                            out.println("<html>");
-                            out.println("<head>");
-                            out.println("<title>Registro realizado</title>");
-                            out.println("</head>");
-                            out.println("<body>");
-                            out.println("<h1>Te has registrado correctamente " + request.getContextPath() + "</h1>");
-                            out.println("</body>");
-                            out.println("</html>");
-                        }*/
+                        HttpSession session = request.getSession();
+                        session.setAttribute("usuario", nuevoUsuario);
 
                     }
                 }
