@@ -85,7 +85,9 @@
 
                                                 </ul>
                                             </div>
-                                            <% ArrayList<Producto> producto = (ArrayList<Producto>) request.getAttribute("productos");%>
+                                            <%-- ArrayList<Producto> producto = (ArrayList<Producto>) request.getAttribute("productos");%>
+                                          
+                                            
                                             
                                             <% if (!producto.isEmpty()) {%>
 
@@ -98,7 +100,7 @@
                                                     <td><b><img src="<%=producto.get(i).getImagen()%>" width="250" height="250"></b></td>
                                                     <td><b>
                                                             
-                                                            <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>--%>
+                                                            <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>%>
                                                             <form  action="Cesta" method="post">
                                                                 
                                                                 <input type="hidden" name= "producto" value="<%=String.valueOf(producto.get(i).getId())%>">
@@ -113,7 +115,7 @@
                                             </ul>
                                             <%} else {%>
                                             <p class="textosCentrados">No hay productos disponibles de esta categoría.</p>
-                                            <%}%>
+                                            <%}--%>
 
                                            
                                           
