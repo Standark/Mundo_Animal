@@ -33,19 +33,16 @@ public class CtrlIdentificarse extends HttpServlet {
                 //En primer lugar comprobamos si el usuario registrado existe en la base de datos
                 if (!UsuarioRegistradoBD.isUsuarioRegistrado(nombreUsuario)) {
                     //Si el usuario no existe en la base de datos , redireccioamos a la pagina de error
-                    System.out.println("Usuario No Registrado");
                     request.setAttribute("textoError", "No existe el usuario en la base de datos");
                     this.url = "/error.jsp";
                 }
                 else if (!UsuarioRegistradoBD.isClaveCorrecta(nombreUsuario, clave)) {
                     //Si el usuario no ha introducido de forma correcta su clave , redireccionamos a la pagina de error
-                    System.out.println("Clave incorrecta");
                     request.setAttribute("textoError", "La clave introducida no es correcta, por favor vuelva a introducirla");
                     this.url = "/error.jsp";
                 }
                 else if (!UsuarioRegistradoBD.isActivado(nombreUsuario)){
                     //Si el usuario todavía no ha activado la cuenta, redireccionamos a la pagina de error
-                    System.out.println("Clave incorrecta");
                     request.setAttribute("textoError", "Revise su correo y active la cuenta para poder identificarse en TravelBook.");
                     this.url = "/error.jsp";
                 }

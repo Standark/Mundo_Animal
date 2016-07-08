@@ -90,7 +90,6 @@ public class CtrlContinuarDiario extends HttpServlet {
                         if (foto != null) {
                             urlFoto = "usuarios" + File.separator + foto.getUrl();
                         }
-                        System.out.println("FOTO:::." + urlFoto);
                         request.setAttribute("urlFoto", urlFoto);
 
                         //enviar video
