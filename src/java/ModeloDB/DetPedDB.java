@@ -101,7 +101,7 @@ public class DetPedDB {
         }
     }*/
     
-    public static ArrayList<DetPed> buscarDetPedPorPedido(int i) {
+    public static ArrayList<DetPed> buscarDetPedPorPedido(int idProducto) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -110,7 +110,7 @@ public class DetPedDB {
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setInt(1,i);
+            ps.setInt(1,idProducto);
             ResultSet res = ps.executeQuery();
             while(res.next()){
                 DetPed producto = new DetPed(res.getInt("ID"),
@@ -210,4 +210,27 @@ public class DetPedDB {
         }
         return titulo;
     }*/
+    public static ArrayList<DetPed> buscarDetPedPorCliente(int idCliente) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ArrayList<DetPed> resultado = new ArrayList<DetPed>();
+        String query = "SELECT * FROM PEDIDO WHERE ID_CLIENTE = ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1,idCliente);
+            ResultSet res = ps.executeQuery();
+            while(res.next()){
+                resultado.add(DetPedDB.getDetPedPorId(res.getInt("ID_PEDIDO")));
+            }
+            ps.close();
+            pool.freeConnection(connection);
+            return resultado;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return resultado;
+        }
+    }
 }
