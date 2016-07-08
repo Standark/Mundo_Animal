@@ -1,3 +1,5 @@
+
+<%@page import="Modelo.Usuario"%>
 <link rel="stylesheet" href="style.css" />
 <div id="menu">
     <ul>
@@ -7,8 +9,19 @@
         <ul>
             <li><a href="loginORegistro.jsp">REGISTRO Y LOGIN</a></li>
 
+            <%
+                Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+                if (usuario == null) {
+            %>
+            <li><a>  Bienvenido </a></li>
+                <%
+                } else {
+                %>
+            <li><a href="miPerfil.jsp"> Bienvenid@ <%=usuario.getNombre()%></a></li>
+                <%
+                    }
+                %>
 
-            <li></li>
         </ul>
     </div>
     <div id="buscar">

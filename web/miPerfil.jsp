@@ -21,7 +21,6 @@
 	<%@include file="header.jsp" %>
 	<%@include file="menu.jsp" %>
         <div id="page">
-            <% Usuario usuario = (Usuario) sesion.getAttribute("usuario");%>
             <table>
                 <tr>
                 <td><%@include file="menuLateral.jsp" %></td>
