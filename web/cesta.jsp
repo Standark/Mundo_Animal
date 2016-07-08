@@ -56,8 +56,8 @@
                 </td>
                 </tr>
                 <tr>
-                        <%HttpSession sesion = request.getSession();
-                        Double total = 0.00;%>
+                        
+                        <%Double total = 0.00;%>
                         <%if(sesion.getAttribute("prods")==null){%>
                         <tr>
                             <td colspan="4"><p class="subtitulos"> CARRITO VACIO</p></td>  
