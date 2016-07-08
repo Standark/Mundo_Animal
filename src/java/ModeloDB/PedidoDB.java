@@ -21,7 +21,7 @@ public class PedidoDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         String query
-                    = "INSERT INTO PEDIDO (ID, ID_CLIENTE, FECHA_ALTA) VALUES (?, ?)";
+                    = "INSERT INTO PEDIDO (ID_CLIENTE, FECHA_ALTA) VALUES (?, ?)";
 
         try {
             ps = connection.prepareStatement(query);

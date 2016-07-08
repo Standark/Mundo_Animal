@@ -20,7 +20,7 @@ public class DetPedDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         String query
-                = "INSERT INTO DETPED (ID, ID_PEDIDO, ID_PRODUCTO, CANTIDAD, PRECIO)"
+                = "INSERT INTO DETPED (ID_PEDIDO, ID_PRODUCTO, CANTIDAD, PRECIO)"
                 + " VALUES (?, ?, ?, ?)";
 
         try {
