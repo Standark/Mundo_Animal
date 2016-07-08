@@ -18,9 +18,7 @@
                     <li class="blue">
                         <a href="#" class="contacto"></a>
                         <ul>
-                            <li><a href="#">Contacto Zoólogico</a></li>
-                            <li><a href="contacto-tienda.html">Contacto Tienda</a></li>
-                            <li><a href="#">Contacto Veterinario</a></li>
+                            <li><a href="contacto-tienda.jsp">Contacto Tienda</a></li>
                         </ul>
                     </li>
                     <li class="red">
