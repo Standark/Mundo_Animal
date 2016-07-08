@@ -1,5 +1,6 @@
 
 
+<%@page import="ModeloDB.ProductoDB"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Modelo.Producto"%>
 <%-- 
@@ -89,27 +90,27 @@
 
                                             </ul>
                                         </div>
-                                        <%-- ArrayList<Producto> producto = (ArrayList<Producto>) request.getAttribute("productos");%>
+                                        <% ArrayList<Producto> productos = ProductoDB.buscarProductoUltimoComentado(); %>
                                       
                                         
                                         
-                                        <% if (!producto.isEmpty()) {%>
+                                        <% if (!productos.isEmpty()) {%>
 
                                             <ul>
-                                                <% for (int i = 0; i < producto.size(); i++) {%>
+                                                <% for (int i = 0; i < productos.size(); i++) {%>
                                                 <tr>
-                                                    <td><li><b><%=producto.get(i).getNombre()%></b></td>
-                                                    <td><b><%=producto.get(i).getDescripcion()%></b></td>
-                                                    <td>Precio unidad: <b><%=producto.get(i).getPrecio()%></b></td>
-                                                    <td><b><img src="<%=producto.get(i).getImagen()%>" width="250" height="250"></b></td>
+                                                    <td><li><b><%=productos.get(i).getNombre()%></b></td>
+                                                    <td><b><%=productos.get(i).getDescripcion()%></b></td>
+                                                    <td>Precio unidad: <b><%=productos.get(i).getPrecio()%></b></td>
+                                                    <td><b><img src="<%=productos.get(i).getImagen()%>" width="250" height="250"></b></td>
                                                     <td><b>
                                                             
-                                        <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>%>
+                                        
                                         <form  action="Cesta" method="post">
                                             
-                                            <input type="hidden" name= "producto" value="<%=String.valueOf(producto.get(i).getId())%>">
-                                            <input type="hidden" name="animal" value="<%=String.valueOf(producto.get(i).getAnimal())%>">
-                                            <input type="hidden" name ="categoria"value="<%=String.valueOf(producto.get(i).getCategoria())%>">
+                                            <input type="hidden" name= "producto" value="<%=String.valueOf(productos.get(i).getId())%>">
+                                            <input type="hidden" name="animal" value="<%=String.valueOf(productos.get(i).getAnimal())%>">
+                                            <input type="hidden" name ="categoria"value="<%=String.valueOf(productos.get(i).getCategoria())%>">
                                             <input type="hidden" name="action" value="add">
                                             <button class ="btn" type="submit" value="añadir" name="btnAñadir">Añadir al carrito</button>
                                         </form></b></li>
@@ -119,7 +120,7 @@
                         </ul>
                         <%} else {%>
                         <p class="textosCentrados">No hay productos disponibles de esta categoría.</p>
-                        <%}--%>
+                        <%}%>
 
 
 
