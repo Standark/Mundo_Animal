@@ -113,7 +113,11 @@
                     </td>
                     <td>
              
-                    <button class="boton-seguir" type="submit" >Seguir comprando</button>
+                    
+                        <form action="ObtenerProductos?animal=Perro" method="post">
+                            <button class="boton-seguir" type="submit" value="" name="btnSeguir">Seguir Comprando</button>
+                        </form>
+                        
                     
                     </td>
                     <td>
