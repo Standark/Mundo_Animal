@@ -68,7 +68,6 @@ public class Cesta extends HttpServlet {
         } else {
             url = url1;
         }
-        System.out.println(url);
 
         HttpSession sesion = request.getSession();
         Map<Producto, Integer> prods;
@@ -79,8 +78,6 @@ public class Cesta extends HttpServlet {
         } else {
             prods = (HashMap<Producto, Integer>) sesion.getAttribute("prods");
         }
-        System.out.println("HOLLLAAAA");
-        System.out.println(request.getParameter("producto"));
 
         Iterator<Entry<Producto, Integer>> it = prods.entrySet().iterator();
         Entry<Producto, Integer> entry = null;

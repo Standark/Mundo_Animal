@@ -34,7 +34,7 @@
                                 <td rowspan="3"  width= "4000 px">
                                     <div id="producto">
                                         <table id ="producto-flitros" >
-                                            
+
                                             <% String animal = (String) request.getAttribute("animal");%>
                                             <% String categoria = (String) request.getAttribute("categoria");%>
 
@@ -48,30 +48,33 @@
                                                 <% for (int i = 0; i < listProd.size(); i++) {%>
                                                 <tr>
                                                     <td><li><b><%=listProd.get(i).getNombre()%></b></td>
-                                                    <td><b><%=listProd.get(i).getDescripcion()%></b></td>
-                                                    <td>Precio unidad: <b><%=listProd.get(i).getPrecio()%></b></td>
-                                                    <td><b><img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b></td>
-                                                    <td><b>
-                                                            
-                                                            <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>--%>
-                                                            <form  action="Cesta" method="post">
-                                                                
-                                                                <input type="hidden" name= "producto" value="<%=String.valueOf(listProd.get(i).getId())%>">
-                                                                <input type="hidden" name="animal" value="<%=animal%>">
-                                                                <input type="hidden" name ="categoria"value="<%=categoria%>">
-                                                                <input type="hidden" name="action" value="add">
-                                                                <button class ="btn" type="submit" value="añadir" name="btnAñadir">Añadir al carrito</button>
-                                                            </form></b></li>
-                                                    </td>
-                                                        <%}%>
+                                                <td><b><%=listProd.get(i).getDescripcion()%></b></td>
+                                                <td>Precio unidad: <b><%=listProd.get(i).getPrecio()%></b></td>
+                                                <td><b><img src="<%=listProd.get(i).getImagen()%>" width="250" height="250"></b></td>
+                                                <td><b>
+
+                                                        <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>--%>
+                                                        <form  action="Cesta" method="post">
+
+                                                            <input type="hidden" name= "producto" value="<%=String.valueOf(listProd.get(i).getId())%>">
+                                                            <input type="hidden" name="animal" value="<%=animal%>">
+                                                            <input type="hidden" name ="categoria"value="<%=categoria%>">
+                                                            <input type="hidden" name="action" value="add">
+                                                            <button class ="btn" type="submit" value="añadir" name="btnAñadir">Añadir al carrito</button>
+                                                            <input  class ="btn" type="button" value="Comentar Producto" onClick="location.href = 'valoracion.jsp'"<%
+                                                                sesion.setAttribute("idProducto", listProd.get(i).getId()); %>>
+                                                        </form>
+                                                    </b></li>
+                                                </td>
+                                                <%}%>
                                                 </tr>
                                             </ul>
                                             <%} else {%>
                                             <p class="textosCentrados">No hay productos disponibles de esta categoría.</p>
                                             <%}%>
 
-                                           
-                                          
+
+
 
                                         </table>
                                         <tr>

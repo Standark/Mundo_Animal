@@ -58,7 +58,6 @@ public class Login extends HttpServlet {
                 } else {
                     //Una vez se ha comprobado que el usuario existe y que ha introducido su contraseña de forma correcta se inicia la sesión
                     Usuario nuevoUsuario = UsuarioDB.getUsuarioPorNick(nombreUsuario);
-                    System.out.println("Nombre: " + nuevoUsuario.getNombre() + "CP: " + nuevoUsuario.getCP());
                     this.url = "/miPerfil.jsp";
                     request.setAttribute("usuario", nuevoUsuario);
                     sesion.setAttribute("usuario", nuevoUsuario);

@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="style.css" />
 <div id="header">
     <div id="logo">
-        <h1><a href="#">Mundo Animal</a></h1>			
+        <h1><a href="index.jsp">Mundo Animal</a></h1>			
     </div>
     <div id ="iconos">
         <div id="perfil">

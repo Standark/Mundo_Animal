@@ -6,9 +6,9 @@
 package Servlet;
 
 import Modelo.Comentario;
+import Modelo.Usuario;
 import ModeloDB.ComentarioDB;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.Calendar;
 import javax.servlet.ServletException;
@@ -33,25 +33,24 @@ public class Comentar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     String url = null;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try {
-            HttpSession sesion = request.getSession();
-            if (sesion.getAttribute("id") == null) {
-                request.setAttribute("textoError", "La sesion no ha sido iniciada");
-                url = "/error.jsp";
-            } else {
-                String titulo = (String) request.getAttribute("titulo");
-                String comentario = (String) request.getAttribute("comentario");
-                int puntuacion = (int) request.getAttribute("puntuacion");
-                int idCliente = (int) request.getAttribute("idCliente");
-                Date fecha = new Date(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
-                int idProducto = (int) request.getAttribute("idProducto");
-                ComentarioDB.insertar(new Comentario(1, idCliente, idProducto, puntuacion, titulo, fecha, comentario));
-            }
-        }catch(Exception e){System.out.println(e);}
-        
+        HttpSession sesion = request.getSession();
+        System.out.print("He llegado al servlet");
+        if (sesion.getAttribute("id") == null) {
+            request.setAttribute("textoError", "La sesion no ha sido iniciada");
+            url = "/error.jsp";
+        } else {
+            String titulo = (String) request.getAttribute("titulo");
+            String comentario = (String) request.getAttribute("comentario");
+            int puntuacion = (int) request.getAttribute("puntuacion");
+            Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+            int idCliente = (int) usuario.getId();
+            Date fecha = new Date(Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH);
+            int idProducto = (int) sesion.getAttribute("idProducto");
+            ComentarioDB.insertar(new Comentario(1, idCliente, idProducto, puntuacion, titulo, fecha, comentario));
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
