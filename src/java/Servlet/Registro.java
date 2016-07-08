@@ -42,9 +42,8 @@ public class Registro extends HttpServlet {
         try {
             //Obtenemos la sesión actual
             HttpSession sesion = request.getSession();
-            // En este caso de uso, el usuario NO tiene que haber iniciado sesion
-            // por eso comprobamos que quien llegue a este servlet no este metido en sesion
-            if (request.getParameter("nombre") != null) {
+            Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+            if (usuario == null) {
                 //Obtenemos el contenido de los cuadros de texto que nos llegan de la pagina jsp
                 // se utiliza request por que esta acción tiene el alcance de una única petición
                 String nombre = request.getParameter("nombre");
@@ -85,7 +84,8 @@ public class Registro extends HttpServlet {
                 // Si el usuario que llega a este servlet esta registrado, no tiene sentido que lo vuelva a hacer, por eso
                 // redirigimos a su peril
             } else {
-                this.url = "/perfil.jsp";
+                request.setAttribute("textoError", "Antes de registrarte debes cerrar sesión.");
+                this.url = "/error.jsp";
             }
 
             //En caso de algun error no previsto , redireccionamos a una pagina destinada a este fin

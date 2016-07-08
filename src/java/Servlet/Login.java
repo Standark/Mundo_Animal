@@ -40,8 +40,8 @@ public class Login extends HttpServlet {
         this.url = "/index.jsp";
         try {
             HttpSession sesion = request.getSession();
-            // Si el usuario no ha iniciado sesión ...
-            if (sesion.getAttribute("id") == null) {
+            Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+            if (usuario == null) {
                 // Recuperamos del formulario de acceso.html el usuario y la contraseña introducidas por el usuario
                 String nombreUsuario = request.getParameter("nick");
                 String clave = request.getParameter("password");
@@ -66,7 +66,8 @@ public class Login extends HttpServlet {
                 // Si el usuario introduce la direccion de este servlet de forma manual en la barra de direcciones 
                 // o llega como resultado de una "navegación hacia atras"  le redirigimos a la página correspondiente
             } else {
-                this.url = "/perfil.jsp";
+                request.setAttribute("textoError", "Ya estas logueado con otra cuenta.");
+            this.url = "/error.jsp";
             }
 
         } catch (Exception e) {

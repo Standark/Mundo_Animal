@@ -1272,12 +1272,12 @@ a:hover {
 #slidebox, #slidebox ul {width:700px;height:400px;}
 #slidebox, #slidebox ul li{width:700px;height:300px;}
 #slidebox ul li{position:relative; left:0; background:#eee; float:left;list-style: none; padding:5px 15px;  font-family:Verdana, Geneva, sans-serif; font-size:10px;}
-#slidebox .next, #slidebox .previous{position:absolute; z-index:2; display:block; width:21px; height:21px;top:139px;}
+#slidebox .next, #slidebox .previous{position:absolute; z-index:-2; display:block; width:21px; height:21px;top:139px;}
 #slidebox .next{right:0; margin-right:10px; background:url(slidebox_next.png) no-repeat left top;}
 #slidebox .next:hover{background:url(slidebox_next_hover.png) no-repeat left top;}
 #slidebox .previous{margin-left:10px; background:url(slidebox_previous.png) no-repeat left top;}
 #slidebox .previous:hover{background:url(slidebox_previous_hover.png) no-repeat left top;}
-#slidebox .thumbs{position:absolute; z-index:2; bottom:10px; right:10px;}
+#slidebox .thumbs{position:absolute; z-index:-2; bottom:10px; right:10px;}
 #slidebox .thumbs a{display:block; margin-left:5px; float:left; font-family:Verdana, Geneva, sans-serif; font-size:9px; text-decoration:none; padding:2px 4px; background:url(slidebox_thumb.png); color:#fff;}
 #slidebox .thumbs a:hover{background:#fff; color:#000;}
 #slidebox .thumbs .thumbActive{background:#fff; color:#000; display:block; margin-left:5px; float:left; font-family:Verdana, Geneva, sans-serif; font-size:9px; text-decoration:none; padding:2px 4px;}

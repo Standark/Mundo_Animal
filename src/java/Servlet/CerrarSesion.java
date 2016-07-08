@@ -5,13 +5,8 @@
  */
 package Servlet;
 
-import Modelo.Producto;
-import ModeloDB.ProductoDB;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,11 +16,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author David
+ * @author Your Name <Gonzalo López Fernández>
  */
-public class Cesta extends HttpServlet {
+public class CerrarSesion extends HttpServlet {
 
-    //private Map<Producto, Integer> prods = new HashMap<Producto, Integer>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,68 +31,15 @@ public class Cesta extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getParameter("action");
 
-        if (action.equals("mostrar")) {
-            mostrarCarrito(request, response);
-        } else if (action.equals("add")) {
-            addProduct(request, response);
+        String url = "/index.jsp";
 
-        }
-    }
-
-    private void mostrarCarrito(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String url = "/cesta.jsp";
+        HttpSession sesion = request.getSession();
+        sesion.invalidate();
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
-    }
 
-    private void addProduct(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        String categoria = request.getParameter("categoria");
-        String animal = request.getParameter("animal");
-        String url;
-        String url1 = "ObtenerProductos?animal=" + animal;
-
-        if (!categoria.equals("null")) {
-            url = url1 + "&categoria=" + categoria;
-        } else {
-            url = url1;
-        }
-        System.out.println(url);
-
-        HttpSession sesion = request.getSession();
-        Map<Producto, Integer> prods;
-        Producto prod = ProductoDB.getProductoPorId(Integer.parseInt(request.getParameter("producto")));
-
-        if (sesion.getAttribute("prods") == null) {
-            prods = new HashMap<>();
-        } else {
-            prods = (HashMap<Producto, Integer>) sesion.getAttribute("prods");
-        }
-        System.out.println("HOLLLAAAA");
-        System.out.println(request.getParameter("producto"));
-
-        Iterator<Entry<Producto, Integer>> it = prods.entrySet().iterator();
-        Entry<Producto, Integer> entry = null;
-        Boolean flag = true;
-        while (it.hasNext()) {
-            entry = it.next();
-            if (entry.getKey().getId() == prod.getId()) {
-                prods.put(entry.getKey(), entry.getValue() + 1);
-                flag = false;
-            }
-        }
-        if (flag) {
-            prods.put(prod, 1);
-        }
-        sesion.setAttribute("prods", prods);
-        response.sendRedirect(url);
-        //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        //dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

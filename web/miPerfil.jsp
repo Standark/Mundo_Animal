@@ -24,7 +24,7 @@
             <% Usuario usuario = (Usuario) sesion.getAttribute("usuario");%>
             <table>
                 <tr>
-                <td><%@include file="menuPerfil.jsp" %></td>
+                <td><%@include file="menuLateral.jsp" %></td>
                 <td>
                     <table>
                         <tr><td><p>Nombre:</p></td><td><p> <%=usuario.getNombre()%></p></td></tr>

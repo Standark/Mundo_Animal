@@ -62,36 +62,38 @@
                     <div> <!-- end #content -->
                         <table id="pagina" > 
                             <tr>
-                                <td valign="top" >
+                                <td rowspan="5" valign="top" >
                                     <%@include file="menuLateral.jsp" %>
 
                                 </td>
+                            <tr></tr>
+                            <tr></tr>
 
-                                <td rowspan="3">
-                                    <div id="producto">
-                                        <table id ="producto-table"   >
+                            <td rowspan="3">
+                                <div id="producto">
+                                    <table id ="producto-table"   >
 
-                                            <div id="slidebox">
-                                                <div class="next"></div>
-                                                <div class="previous"></div>
-                                                <div class="thumbs">
-                                                    <a href="#" onClick="" class="1 thumbActive">1</a> 
-                                                    <a href="#" onClick="" class="2">2</a> 
-                                                    <a href="#" onClick="" class="3 ">3</a> 
+                                        <div id="slidebox">
+                                            <div class="next"></div>
+                                            <div class="previous"></div>
+                                            <div class="thumbs">
+                                                <a href="#" onClick="" class="1 thumbActive">1</a> 
+                                                <a href="#" onClick="" class="2">2</a> 
+                                                <a href="#" onClick="" class="3 ">3</a> 
 
-                                                </div>
-                                                <ul>
-                                                    <li><img src="images/noticia1.gif" alt="antiparasitos"/></li>
-                                                    <li><img src="images/noticias2.gif" alt="tapas"/></li>
-                                                    <li><img src="images/noticia3.gif" alt="solucion huesos"/></li>
-
-                                                </ul>
                                             </div>
-                                            <%-- ArrayList<Producto> producto = (ArrayList<Producto>) request.getAttribute("productos");%>
-                                          
-                                            
-                                            
-                                            <% if (!producto.isEmpty()) {%>
+                                            <ul>
+                                                <li><img src="images/noticia1.gif" alt="antiparasitos"/></li>
+                                                <li><img src="images/noticias2.gif" alt="tapas"/></li>
+                                                <li><img src="images/noticia3.gif" alt="solucion huesos"/></li>
+
+                                            </ul>
+                                        </div>
+                                        <%-- ArrayList<Producto> producto = (ArrayList<Producto>) request.getAttribute("productos");%>
+                                      
+                                        
+                                        
+                                        <% if (!producto.isEmpty()) {%>
 
                                             <ul>
                                                 <% for (int i = 0; i < producto.size(); i++) {%>
@@ -102,27 +104,27 @@
                                                     <td><b><img src="<%=producto.get(i).getImagen()%>" width="250" height="250"></b></td>
                                                     <td><b>
                                                             
-                                            <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>%>
-                                            <form  action="Cesta" method="post">
-                                                
-                                                <input type="hidden" name= "producto" value="<%=String.valueOf(producto.get(i).getId())%>">
-                                                <input type="hidden" name="animal" value="<%=String.valueOf(producto.get(i).getAnimal())%>">
-                                                <input type="hidden" name ="categoria"value="<%=String.valueOf(producto.get(i).getCategoria())%>">
-                                                <input type="hidden" name="action" value="add">
-                                                <button class ="btn" type="submit" value="añadir" name="btnAñadir">Añadir al carrito</button>
-                                            </form></b></li>
-                                    </td>
-                                        <%}%>
-                                </tr>
-                            </ul>
-                            <%} else {%>
-                            <p class="textosCentrados">No hay productos disponibles de esta categoría.</p>
-                            <%}--%>
+                                        <%--<a href="Cesta?action=add&producto=<%=String.valueOf(listProd.get(i).getId())%>">Añadir al carrito</a>%>
+                                        <form  action="Cesta" method="post">
+                                            
+                                            <input type="hidden" name= "producto" value="<%=String.valueOf(producto.get(i).getId())%>">
+                                            <input type="hidden" name="animal" value="<%=String.valueOf(producto.get(i).getAnimal())%>">
+                                            <input type="hidden" name ="categoria"value="<%=String.valueOf(producto.get(i).getCategoria())%>">
+                                            <input type="hidden" name="action" value="add">
+                                            <button class ="btn" type="submit" value="añadir" name="btnAñadir">Añadir al carrito</button>
+                                        </form></b></li>
+                                </td>
+                                    <%}%>
+                            </tr>
+                        </ul>
+                        <%} else {%>
+                        <p class="textosCentrados">No hay productos disponibles de esta categoría.</p>
+                        <%}--%>
 
 
 
 
-                                        </table>
+                                    </table>
                         </table>
 
                     </div>
