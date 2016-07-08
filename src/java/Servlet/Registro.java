@@ -8,9 +8,6 @@ package Servlet;
 import Modelo.Usuario;
 import ModeloDB.UsuarioDB;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,7 +42,6 @@ public class Registro extends HttpServlet {
         try {
             //Obtenemos la sesión actual
             HttpSession sesion = request.getSession();
-            System.out.println(sesion.getAttributeNames());
             // En este caso de uso, el usuario NO tiene que haber iniciado sesion
             // por eso comprobamos que quien llegue a este servlet no este metido en sesion
             if (request.getParameter("nombre") != null) {
@@ -83,8 +79,7 @@ public class Registro extends HttpServlet {
                     } else {
                         this.url = "/miPerfil.jsp";
                         request.setAttribute("usuario", nuevoUsuario);
-                        HttpSession session = request.getSession();
-                        session.setAttribute("usuario", nuevoUsuario);
+                        sesion.setAttribute("usuario", nuevoUsuario);
 
                     }
                 }

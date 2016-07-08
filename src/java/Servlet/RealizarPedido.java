@@ -9,7 +9,6 @@ import Modelo.Pedido;
 import Modelo.Producto;
 import Modelo.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -36,24 +35,24 @@ public class RealizarPedido extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         HttpSession sesion = request.getSession();
-        
-        if(sesion.getAttribute("usuario") != null){
-            
+
+        if (sesion.getAttribute("usuario") != null) {
+
             Usuario user = (Usuario) sesion.getAttribute("usuario");
-            
+
             Pedido pedido = new Pedido();
-            
-            Map<Producto, Integer> prods = (HashMap<Producto,Integer>) sesion.getAttribute("prods");
-            Iterator <Entry<Producto,Integer>> it = prods.entrySet().iterator();
-            Entry<Producto,Integer> entry = null;
+
+            Map<Producto, Integer> prods = (HashMap<Producto, Integer>) sesion.getAttribute("prods");
+            Iterator<Entry<Producto, Integer>> it = prods.entrySet().iterator();
+            Entry<Producto, Integer> entry = null;
             Producto prod = null;
             Integer cant = null;
-                        
-            while(it.hasNext()){
-                entry =it.next();
-                prod= entry.getKey();
+
+            while (it.hasNext()) {
+                entry = it.next();
+                prod = entry.getKey();
                 cant = entry.getValue();
             }
         }

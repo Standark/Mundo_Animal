@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import Modelo.Usuario;
 import ModeloDB.UsuarioDB;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
@@ -56,7 +57,9 @@ public class Login extends HttpServlet {
                     this.url = "/error.jsp";
                 } else {
                     //Una vez se ha comprobado que el usuario existe y que ha introducido su contraseña de forma correcta se inicia la sesión
-                    sesion.setAttribute("usuario", UsuarioDB.getUsuarioPorNick(nombreUsuario));
+                    Usuario u = UsuarioDB.getUsuarioPorNick(nombreUsuario);
+                    System.out.println("Nombre: "+u.getNombre() + "CP: "+u.getCP());
+                    sesion.setAttribute("usuario", u );
                     this.url = "/index.jsp";
                 }
                 // Si el usuario introduce la direccion de este servlet de forma manual en la barra de direcciones 

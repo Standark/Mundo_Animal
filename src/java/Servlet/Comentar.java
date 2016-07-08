@@ -37,8 +37,8 @@ public class Comentar extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            HttpSession session = request.getSession();
-            if (session.getAttribute("id") == null) {
+            HttpSession sesion = request.getSession();
+            if (sesion.getAttribute("id") == null) {
                 request.setAttribute("textoError", "La sesion no ha sido iniciada");
                 url = "/error.jsp";
             } else {

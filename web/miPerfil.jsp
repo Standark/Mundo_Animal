@@ -35,7 +35,7 @@
                         <tr><td><p>eMail:</p></td><td><p> <%=usuario.getMail()%></p></td></tr>
                         <tr><td><p>Ciudad:</p></td><td><p> <%=usuario.getCiudad()%></p></td></tr>
                         <tr><td><p>Provincia:</p></td><td><p> <%=usuario.getProvincia()%></p></td></tr>
-                        <tr><td><p>Telefono:</p></td><td><p> <%=usuario.getTelefono()%></p></td></tr><
+                        <tr><td><p>Telefono:</p></td><td><p> <%=usuario.getTelefono()%></p></td></tr>
                         <tr><td><p>Fecha de nacimiento:</p></td><td><p>  <%=usuario.getFechaNac()%></p></td></tr>
                     </table>
                 </td>

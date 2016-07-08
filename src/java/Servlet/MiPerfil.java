@@ -35,13 +35,13 @@ public class MiPerfil extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            HttpSession session = request.getSession();
-            if(session.getAttribute("id")==null){
+            HttpSession sesion = request.getSession();
+            if(sesion.getAttribute("id")==null){
                 request.setAttribute("textoError", "La sesion no ha sido iniciada");
                 url = "/error.jsp";
             }
             else{
-                int id =(int) session.getAttribute("id");
+                int id =(int) sesion.getAttribute("id");
                 Usuario usuario = UsuarioDB.getUsuarioPorID(id);
                 request.setAttribute("usuario",usuario);
             }

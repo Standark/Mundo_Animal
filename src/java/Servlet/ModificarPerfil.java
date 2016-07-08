@@ -8,7 +8,6 @@ package Servlet;
 import Modelo.Usuario;
 import ModeloDB.UsuarioDB;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,30 +31,31 @@ public class ModificarPerfil extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private String url;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            HttpSession session = request.getSession();
-            if(session.getAttribute("id")==null){
+            HttpSession sesion = request.getSession();
+            Usuario usuario = (Usuario) sesion.getAttribute("usuario");
+            if (usuario.getNombre() == null) {
                 request.setAttribute("textoError", "La sesion no ha sido iniciada");
                 this.url = "/error.jsp";
+            } else {
+                int id = (int) sesion.getAttribute("id");
+                String nombre = (String) request.getAttribute("nombre");
+                String apellido = (String) request.getAttribute("apellido");
+                String nick = (String) request.getAttribute("nick");
+                String password = (String) request.getAttribute("password");
+                String direccion = (String) request.getAttribute("direccion");
+                int cp = (int) request.getAttribute("cp");
+                String mail = (String) request.getAttribute("mail");
+                String ciudad = (String) request.getAttribute("ciudad");
+                String provincia = (String) request.getAttribute("provincia");
+                int telefono = (int) request.getAttribute("telefono");
+                Date fechaNac = (Date) request.getAttribute("fechaNac");
+                int completo = UsuarioDB.modificarUsuario(id, nombre, apellido, password, direccion, cp, mail, ciudad, provincia, telefono, fechaNac);
             }
-            else{
-                int id =(int) session.getAttribute("id");
-                String nombre = (String)request.getAttribute("nombre");
-                String apellido = (String)request.getAttribute("apellido");
-                String nick = (String)request.getAttribute("nick");
-                String password = (String)request.getAttribute("password"); 
-                String direccion = (String)request.getAttribute("direccion");
-                int cp = (int)request.getAttribute("cp");
-                String mail = (String)request.getAttribute("mail");
-                String ciudad = (String)request.getAttribute("ciudad");
-                String provincia = (String)request.getAttribute("provincia");
-                int telefono = (int)request.getAttribute("telefono");
-                Date fechaNac = (Date)request.getAttribute("fechaNac");
-                int completo = UsuarioDB.modificarUsuario(id, nombre, apellido, password, direccion, cp, mail,ciudad, provincia, telefono, fechaNac);
-            }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
