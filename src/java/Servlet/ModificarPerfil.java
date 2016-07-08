@@ -41,19 +41,19 @@ public class ModificarPerfil extends HttpServlet {
                 request.setAttribute("textoError", "La sesion no ha sido iniciada");
                 this.url = "/error.jsp";
             } else {
-                int id = (int) sesion.getAttribute("id");
-                String nombre = (String) request.getAttribute("nombre");
-                String apellido = (String) request.getAttribute("apellido");
-                String nick = (String) request.getAttribute("nick");
-                String password = (String) request.getAttribute("password");
-                String direccion = (String) request.getAttribute("direccion");
-                int cp = (int) request.getAttribute("cp");
-                String mail = (String) request.getAttribute("mail");
-                String ciudad = (String) request.getAttribute("ciudad");
-                String provincia = (String) request.getAttribute("provincia");
-                int telefono = (int) request.getAttribute("telefono");
-                Date fechaNac = (Date) request.getAttribute("fechaNac");
-                int completo = UsuarioDB.modificarUsuario(id, nombre, apellido, password, direccion, cp, mail, ciudad, provincia, telefono, fechaNac);
+                int id = usuario.getId();
+                String nombre = usuario.getNombre();
+                String apellido = usuario.getApellidos();
+                String nick = usuario.getNick();
+                String password = usuario.getPassword();
+                String direccion = usuario.getDireccion();
+                int cp = usuario.getCP();
+                String mail = usuario.getMail();
+                String ciudad = usuario.getCiudad();
+                String provincia = usuario.getProvincia();
+                int telefono = usuario.getTelefono();
+                Date fechaNac = usuario.getFechaNac();
+                UsuarioDB.modificarUsuario(id, nombre, apellido, password, direccion, cp, mail, ciudad, provincia, telefono, fechaNac);
             }
         } catch (Exception e) {
             System.out.println(e);
