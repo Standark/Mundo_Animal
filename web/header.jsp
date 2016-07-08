@@ -35,10 +35,9 @@
                                 <%
                                 } else {
                                 %>
-                            <li><a href="index.jsp">Principal</a></li>
                             <li><a href="miPerfil.jsp">Mi perfil</a></li>
                             <li><a href="modificarPerfil.jsp">Editar perfil</a></li>
-                            <li><a href="CerrarSesion">Cerrar Sesión</a></li><%
+                            <li><a href="CerrarSesion">Salir Sesión</a></li><%
                                     }
                                 %>
                         </ul>

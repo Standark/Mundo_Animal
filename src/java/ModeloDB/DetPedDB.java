@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 
 /**
@@ -39,68 +39,7 @@ public class DetPedDB {
         }
     }
 
-/*    public static DetPed getProductoPorNombre(String nombreProducto) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        DetPed detPed = null;
-        String query = "SELECT * FROM DETPED WHERE NOMBRE = ?";
-
-        try {
-            ps = connection.prepareStatement(query);
-            ps.setString(1, nombreProducto);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                detPed = new DetPed(rs.getInt("id"),
-                        rs.getInt("id_precio"),
-                        rs.getInt("id_producto"),
-                        rs.getInt("cantidad"),
-                        rs.getDouble("precio"));
-            }
-            ps.close();
-            pool.freeConnection(connection);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-        return detPed;
-    }
-
-    public static List<DetPed> buscarProducto(String s) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        List<DetPed> resultado = new ArrayList<DetPed>();
-        String query = "SELECT DISTINCT a.* FROM DETPED a WHERE ((a.ID_PEDIDO = ?)"
-                + " OR (a.ANIMAL = ?) OR (a.CATEGORIA = ?))";
-
-        try {
-            ps = connection.prepareStatement(query);
-            ps.setString(1,s);
-            ps.setString(2,s);
-            ps.setString(3,s);
-            ResultSet res = ps.executeQuery();
-            while(res.next()){
-                Producto producto = new Producto(res.getInt("id"),
-                        res.getString("nombre"),
-                        res.getString("descripcion"),
-                        res.getDouble("precio"),
-                        res.getString("imagen"),
-                        res.getInt("valoracion"),
-                        res.getString("animal"),
-                        res.getString("categoria"));
-                resultado.add(producto);
-            }
-            ps.close();
-            pool.freeConnection(connection);
-            return resultado;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return resultado;
-        }
-    }*/
-    
+   
     public static ArrayList<DetPed> buscarDetPedPorPedido(int idProducto) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -135,7 +74,7 @@ public class DetPedDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         DetPed detPed = null;
-        String query = "SELECT * FROM DETPED WHERE ID= ?";
+        String query = "SELECT * FROM DET_PED WHERE ID= ?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -186,30 +125,7 @@ public class DetPedDB {
             return 0;
         }
     }
-/* es posible que haya que borrarlo
-    public static String getNombredelProducto(int idProducto) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        String titulo = null;
-        String query = "SELECT * FROM PRODUCTO WHERE ID = ?";
 
-        try {
-            ps = connection.prepareStatement(query);
-            ps.setInt(1, idProducto);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                titulo = rs.getString("nombre");
-            }
-            ps.close();
-            pool.freeConnection(connection);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-
-        }
-        return titulo;
-    }*/
     public static ArrayList<DetPed> buscarDetPedPorCliente(int idCliente) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();

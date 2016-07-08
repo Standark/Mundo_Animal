@@ -5,9 +5,16 @@
  */
 package Servlet;
 
+import Modelo.DetPed;
+import Modelo.Pedido;
+import Modelo.Producto;
 import Modelo.Usuario;
+import ModeloDB.DetPedDB;
+import ModeloDB.PedidoDB;
+import ModeloDB.ProductoDB;
 import ModeloDB.UsuarioDB;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -61,12 +68,20 @@ public class Login extends HttpServlet {
                     this.url = "/miPerfil.jsp";
                     request.setAttribute("usuario", nuevoUsuario);
                     sesion.setAttribute("usuario", nuevoUsuario);
+
+                    ArrayList<DetPed> listaPedidos = DetPedDB.buscarDetPedPorCliente(nuevoUsuario.getId());
+                    System.out.println(listaPedidos);
+                    ArrayList<Producto> listaProductos = new ArrayList<>();
+                    for (int i = 0; i < listaPedidos.size(); i++) {
+                        listaProductos.add(ProductoDB.getProductoPorId(listaPedidos.get(i).getIdProducto()));
+                    }
+                    sesion.setAttribute("listaComprados", listaProductos);
                 }
                 // Si el usuario introduce la direccion de este servlet de forma manual en la barra de direcciones 
                 // o llega como resultado de una "navegación hacia atras"  le redirigimos a la página correspondiente
             } else {
                 request.setAttribute("textoError", "Ya estas logueado con otra cuenta.");
-            this.url = "/error.jsp";
+                this.url = "/error.jsp";
             }
 
         } catch (Exception e) {

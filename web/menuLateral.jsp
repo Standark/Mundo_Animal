@@ -20,7 +20,6 @@
                           <li><a href="ObtenerProductos?animal=Roedores"><span>Roedores</span></a>
                           <li><a href="ObtenerProductos?animal=Peces"><span>Peces</span></a></li>
                           <li><a href="ObtenerProductos?animal=Aves"><span>Aves</span></a></li>
-                          <li><a href="pagina-en-construccion.html"><span>Mas</span></a></li>
                           <li><a href="pagina-en-construccion.html"><span>¡OFERTAS!</span></a></li>
                           <li>&nbsp </li>
                             
