@@ -57,10 +57,11 @@ public class Login extends HttpServlet {
                     this.url = "/error.jsp";
                 } else {
                     //Una vez se ha comprobado que el usuario existe y que ha introducido su contraseña de forma correcta se inicia la sesión
-                    Usuario u = UsuarioDB.getUsuarioPorNick(nombreUsuario);
-                    System.out.println("Nombre: "+u.getNombre() + "CP: "+u.getCP());
-                    sesion.setAttribute("usuario", u );
-                    this.url = "/index.jsp";
+                    Usuario nuevoUsuario = UsuarioDB.getUsuarioPorNick(nombreUsuario);
+                    System.out.println("Nombre: " + nuevoUsuario.getNombre() + "CP: " + nuevoUsuario.getCP());
+                    this.url = "/miPerfil.jsp";
+                    request.setAttribute("usuario", nuevoUsuario);
+                    sesion.setAttribute("usuario", nuevoUsuario);
                 }
                 // Si el usuario introduce la direccion de este servlet de forma manual en la barra de direcciones 
                 // o llega como resultado de una "navegación hacia atras"  le redirigimos a la página correspondiente

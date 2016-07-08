@@ -5,13 +5,6 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.mail.Address;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,11 +32,11 @@ public class CtrlEnviarCorreo extends HttpServlet {
 //          props.setProperty("mail.smtp.ssl.trust", "smtpserver");
             
             
-            Session session = Session.getDefaultInstance(props);
-            session.setDebug(true);
+            Session sesion = Session.getDefaultInstance(props);
+            sesion.setDebug(true);
 
             //Crear el mensaje
-            Message mensaje = new MimeMessage(session);
+            Message mensaje = new MimeMessage(sesion);
             //Fijar el asunto
             mensaje.setSubject("Confirmación de registro en TravelBook");
             //Fijar el contenido del mensaje
@@ -58,7 +51,7 @@ public class CtrlEnviarCorreo extends HttpServlet {
             //Enviar mensaje
             //Transport transport = session.getTransport("smtps");
             //transport.connect ("smtp.gmail.com", 465, "travelbookcorreo@gmail.com", "travelbook2015");
-            Transport transport = session.getTransport();
+            Transport transport = sesion.getTransport();
             transport.connect("travelbookcorreo@gmail.com", "travelbook2015");
             transport.sendMessage(mensaje, mensaje.getAllRecipients());
             transport.close();

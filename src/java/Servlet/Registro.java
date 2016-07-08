@@ -80,7 +80,6 @@ public class Registro extends HttpServlet {
                         this.url = "/miPerfil.jsp";
                         request.setAttribute("usuario", nuevoUsuario);
                         sesion.setAttribute("usuario", nuevoUsuario);
-
                     }
                 }
                 // Si el usuario que llega a este servlet esta registrado, no tiene sentido que lo vuelva a hacer, por eso
